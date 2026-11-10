@@ -1,0 +1,20 @@
+=== COMMAND ===
+npm test -- Dynamic-Programming/tests/FastFibonacciNumber.test.js
+
+=== STDOUT ===
+
+> javascript@1.0.0 test
+> vitest run Dynamic-Programming/tests/FastFibonacciNumber.test.js
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.0 [39m[90m/Users/fabulous_tarun8/Library/Mobile Documents/com~apple~CloudDocs/Studies/s&ai/diwaliHomework/TheAlgorithms-JavaScript[39m
+
+ [32m✓[39m Dynamic-Programming/tests/FastFibonacciNumber.test.js [2m([22m[2m14 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m14 passed[39m[22m[90m (14)[39m
+[2m   Start at [22m 20:03:15
+[2m   Duration [22m 74ms[2m (import 33%, worker 25%, tests 22%, transform 20%)[22m
+
+
+=== STDERR ===

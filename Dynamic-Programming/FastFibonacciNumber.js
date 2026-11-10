@@ -22,4 +22,4 @@ const fastFibonacci = (N) => {
   return fib(N)[0]
 }
 
-export { fastFibonacci }
+export { fastFibonacci, fib }
