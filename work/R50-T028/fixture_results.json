@@ -1,0 +1,66 @@
+{
+  "task": "R50-T028",
+  "target": "Graphs/ConnectedComponents.js::GraphUnweightedUndirectedAdjacencyList",
+  "passed": true,
+  "cases": [
+    {
+      "name": "smallest_valid_input_empty_graph_absent_result",
+      "source_lines": {
+        "constructor": 4,
+        "loop_skip": 47,
+        "empty_return": 52
+      },
+      "input": {
+        "edges": [],
+        "nodes": []
+      },
+      "expected": [],
+      "actual": []
+    },
+    {
+      "name": "missing_node_dfs_failure_branch",
+      "source_lines": {
+        "failure_branch": 34
+      },
+      "input": {
+        "initial_nodes": [
+          10
+        ],
+        "dfs_missing_node": "999"
+      },
+      "expected": "TypeError",
+      "actual": "TypeError"
+    },
+    {
+      "name": "ordinary_valid_input_after_failure",
+      "source_lines": {
+        "addEdge": 12,
+        "connectedComponents": 42
+      },
+      "input": {
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ]
+        ]
+      },
+      "expected": [
+        "1",
+        "3"
+      ],
+      "actual": [
+        "1",
+        "3"
+      ]
+    }
+  ]
+}

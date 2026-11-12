@@ -1,0 +1,7 @@
+{
+  "python": "3.15.2",
+  "node": "v26.12.1",
+  "npm": "11.20.0",
+  "vitest": "vitest/5.1.0 darwin-arm64 node-v26.12.1",
+  "command": "npx --no-install vitest run Graphs/test/ConnectedComponents.test.js"
+}
