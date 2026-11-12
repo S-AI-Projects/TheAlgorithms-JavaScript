@@ -1,0 +1,16 @@
+{
+  "status": "PASSED",
+  "task": "R50-T025",
+  "precondition_line": "Dynamic-Programming/LongestCommonSubsequence.js:30",
+  "observable_dependencies": "None (Pure Function)",
+  "smallest_valid_input": {
+    "str1": "",
+    "str2": "",
+    "expected": 0
+  },
+  "ordinary_input": {
+    "str1": "ABCDGH",
+    "str2": "AEDFHR",
+    "expected": 3
+  }
+}

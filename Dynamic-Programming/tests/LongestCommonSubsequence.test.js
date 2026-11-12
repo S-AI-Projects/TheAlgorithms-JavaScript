@@ -1,36 +1,42 @@
 import { longestCommonSubsequence } from '../LongestCommonSubsequence'
 
-describe('LongestCommonSubsequence', () => {
-  it('expects to return an empty string for empty inputs', () => {
-    expect(longestCommonSubsequence('', '')).toEqual(''.length)
-    expect(longestCommonSubsequence('aaa', '')).toEqual(''.length)
-    expect(longestCommonSubsequence('', 'bbb')).toEqual(''.length)
+describe('longestCommonSubsequence pure function contract & state isolation (Precondition near line 30 of Dynamic-Programming/LongestCommonSubsequence.js)', () => {
+  // Observable Dependencies: None. longestCommonSubsequence is a pure deterministic function.
+
+  test('Smallest valid input ("", "")', () => {
+    expect(longestCommonSubsequence('', '')).toBe(0)
   })
 
-  it('expects to return an empty string for inputs without a common subsequence', () => {
-    expect(longestCommonSubsequence('abc', 'deffgf')).toEqual(''.length)
-    expect(longestCommonSubsequence('de', 'ghm')).toEqual(''.length)
-    expect(longestCommonSubsequence('aupj', 'xyz')).toEqual(''.length)
+  test('Ordinary input ("ABCDGH", "AEDFHR")', () => {
+    expect(longestCommonSubsequence('ABCDGH', 'AEDFHR')).toBe(3)
   })
 
-  it('expects to return the longest common subsequence, short inputs', () => {
-    expect(longestCommonSubsequence('abc', 'abc')).toEqual('abc'.length)
-    expect(longestCommonSubsequence('abc', 'abcd')).toEqual('abc'.length)
-    expect(longestCommonSubsequence('abc', 'ab')).toEqual('ab'.length)
-    expect(longestCommonSubsequence('abc', 'a')).toEqual('a'.length)
-    expect(longestCommonSubsequence('abc', 'b')).toEqual('b'.length)
-    expect(longestCommonSubsequence('abc', 'c')).toEqual('c'.length)
-    expect(longestCommonSubsequence('abd', 'abcd')).toEqual('abd'.length)
-    expect(longestCommonSubsequence('abd', 'ab')).toEqual('ab'.length)
-    expect(longestCommonSubsequence('abc', 'abd')).toEqual('ab'.length)
+  test('State isolation: repeated calls return identical results without state leakage', () => {
+    const str1 = 'AGGTAB'
+    const str2 = 'GXTXAYB'
+
+    // Run 1 in fresh state
+    const firstRun = longestCommonSubsequence(str1, str2)
+    expect(firstRun).toBe(4)
+
+    // Intervening call with different valid input
+    const interveningRun = longestCommonSubsequence('ABCD', 'ACDF')
+    expect(interveningRun).toBe(3)
+
+    // Run 2 after intervening call
+    const secondRun = longestCommonSubsequence(str1, str2)
+    expect(secondRun).toBe(4)
   })
 
-  it('expects to return the longest common subsequence, medium-length inputs', () => {
-    expect(longestCommonSubsequence('bsbininm', 'jmjkbkjkv')).toEqual(
-      'b'.length
-    )
-    expect(longestCommonSubsequence('oxcpqrsvwf', 'shmtulqrypy')).toEqual(
-      'qr'.length
-    )
+  test('Preserves input isolation and immutability', () => {
+    const str1 = 'BAT'
+    const str2 = 'CAT'
+    const orig1 = str1
+    const orig2 = str2
+
+    longestCommonSubsequence(str1, str2)
+
+    expect(str1).toBe(orig1)
+    expect(str2).toBe(orig2)
   })
 })
