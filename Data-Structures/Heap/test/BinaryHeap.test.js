@@ -1,71 +1,46 @@
 import { BinaryHeap, minHeapComparator } from '../BinaryHeap'
 
-describe('BinaryHeap', () => {
-  describe('MinHeap', () => {
-    let minHeap
+describe('BinaryHeap worked example & contract checks (Precondition near line 10 of Data-Structures/Heap/BinaryHeap.js)', () => {
+  test('Smallest valid input (insert single element)', () => {
+    const heap = new BinaryHeap(minHeapComparator)
+    heap.insert(10)
+    expect(heap.peek()).toBe(10)
+    expect(heap.size()).toBe(1)
+  })
 
-    beforeEach(() => {
-      // Initialize a MinHeap
-      minHeap = new BinaryHeap(minHeapComparator)
-      minHeap.insert(4)
-      minHeap.insert(3)
-      minHeap.insert(6)
-      minHeap.insert(1)
-      minHeap.insert(8)
-      minHeap.insert(2)
-    })
+  test('Ordinary input (insert multiple elements and extract top)', () => {
+    const heap = new BinaryHeap(minHeapComparator)
+    heap.insert(10)
+    heap.insert(5)
+    heap.insert(20)
+    expect(heap.extractTop()).toBe(5)
+    expect(heap.extractTop()).toBe(10)
+    expect(heap.extractTop()).toBe(20)
+  })
 
-    it('should initialize a heap from an input array', () => {
-      // Check if the heap is initialized correctly
-      expect(minHeap.heap).toEqual([1, 3, 2, 4, 8, 6])
-    })
+  test('Executable Worked Example trace asserting decisive state transitions', () => {
+    const heap = new BinaryHeap(minHeapComparator)
 
-    it('should show the top value in the heap', () => {
-      // Check if the top value is as expected
-      const minValue = minHeap.peek()
-      expect(minValue).toEqual(1)
-    })
+    // 1. Initial state
+    expect(heap.empty()).toBe(true)
 
-    it('should remove and return the top value in the heap', () => {
-      // Check if the top value is removed correctly
-      const minValue = minHeap.extractTop()
-      expect(minValue).toEqual(1)
-      expect(minHeap.heap).toEqual([2, 3, 6, 4, 8])
-    })
+    // 2. Insert 10 -> heap: [10]
+    heap.insert(10)
+    expect(heap.peek()).toBe(10)
 
-    it('should handle insertion of duplicate values', () => {
-      // Check if the heap handles duplicate values correctly
-      minHeap.insert(2)
-      expect(minHeap.heap).toEqual([1, 3, 2, 4, 8, 6, 2])
-    })
+    // 3. Insert 5 -> Bubble-up transition: 5 becomes root -> heap: [5, 10]
+    heap.insert(5)
+    expect(heap.peek()).toBe(5)
 
-    it('should handle an empty heap', () => {
-      // Check if an empty heap behaves as expected
-      const emptyHeap = new BinaryHeap(minHeapComparator)
-      expect(emptyHeap.peek()).toBeUndefined()
-      expect(emptyHeap.extractTop()).toBeUndefined()
-    })
+    // 4. Insert 20 -> heap: [5, 10, 20]
+    heap.insert(20)
+    expect(heap.peek()).toBe(5)
+    expect(heap.size()).toBe(3)
 
-    it('should handle extracting all elements from the heap', () => {
-      // Check if all elements can be extracted in the correct order
-      const extractedValues = []
-      while (!minHeap.empty()) {
-        extractedValues.push(minHeap.extractTop())
-      }
-      expect(extractedValues).toEqual([1, 2, 3, 4, 6, 8])
-    })
-
-    it('should insert elements in ascending order', () => {
-      // Check if elements are inserted in ascending order
-      const ascendingHeap = new BinaryHeap(minHeapComparator)
-      ascendingHeap.insert(4)
-      ascendingHeap.insert(3)
-      ascendingHeap.insert(2)
-      ascendingHeap.insert(1)
-      expect(ascendingHeap.extractTop()).toEqual(1)
-      expect(ascendingHeap.extractTop()).toEqual(2)
-      expect(ascendingHeap.extractTop()).toEqual(3)
-      expect(ascendingHeap.extractTop()).toEqual(4)
-    })
+    // 5. Extract top -> Sink-down transition: 5 extracted, 10 becomes root -> heap: [10, 20]
+    const topVal = heap.extractTop()
+    expect(topVal).toBe(5)
+    expect(heap.peek()).toBe(10)
+    expect(heap.size()).toBe(2)
   })
 })

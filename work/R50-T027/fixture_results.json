@@ -1,0 +1,24 @@
+{
+  "status": "PASSED",
+  "task": "R50-T027",
+  "precondition_line": "Data-Structures/Heap/BinaryHeap.js:10",
+  "worked_example": "Inserted [10, 5, 20] with minHeapComparator, verified bubble-up transition (5 root) and extractTop sink-down transition (10 root)",
+  "smallest_valid_input": {
+    "input": [
+      10
+    ],
+    "expected_peek": 10
+  },
+  "ordinary_input": {
+    "input": [
+      10,
+      5,
+      20
+    ],
+    "expected_extracted": [
+      5,
+      10,
+      20
+    ]
+  }
+}

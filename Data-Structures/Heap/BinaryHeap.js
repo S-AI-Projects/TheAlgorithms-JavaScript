@@ -4,10 +4,20 @@
  * Binary heaps are binary trees that are filled level by level and from left to right inside each level.
  * They have the property that any parent node has a smaller (for Min Heap) or greater (for Max Heap) priority
  * than its children, ensuring that the root of the tree always holds the extremal value.
+ *
+ * Executable Worked Example (Min Heap with minHeapComparator):
+ * 1. Initial State: heap = []
+ * 2. insert(10): heap = [10]
+ * 3. insert(5): heap = [5, 10]
+ *    - Key Transition: 5 < 10, bubble-up swaps 5 to root index 0.
+ * 4. insert(20): heap = [5, 10, 20]
+ * 5. extractTop(): returns 5
+ *    - Key Transition: Last element 20 moves to root [20, 10], sink-down swaps 10 and 20 -> heap = [10, 20].
  */
 class BinaryHeap {
   /**
    * Creates a new BinaryHeap instance.
+   *
    * @constructor
    * @param {Function} comparatorFunction - The comparator function used to determine the order of elements (e.g., minHeapComparator or maxHeapComparator).
    */
