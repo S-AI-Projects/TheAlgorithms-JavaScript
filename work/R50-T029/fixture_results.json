@@ -1,0 +1,83 @@
+{
+  "task": "R50-T029",
+  "target": "Search/Minesweeper.js::minesweeper",
+  "passed": true,
+  "complexity_analysis": {
+    "input_size_variable": "N (grid side length for an N x N matrix, where total cells M = N^2)",
+    "theoretical_worst_case": "Theta(N^2) = Theta(M) time and Theta(N^2) auxiliary space; each cell visits a constant 3x3 neighborhood (at most 8 neighbors, lines 24-32).",
+    "empirical_observation": "Deterministic neighbor-check operation count scales strictly as 9 * N^2 (4x increase when doubling N from 10 -> 20 -> 40), matching Theta(N^2) growth."
+  },
+  "fixtures": [
+    {
+      "name": "smallest_valid_empty_matrix",
+      "precondition_lines": [4, 14, 20],
+      "input": [],
+      "expected": [],
+      "actual": []
+    },
+    {
+      "name": "smallest_non_empty_1x1_matrix",
+      "precondition_lines": [4, 14, 22, 27],
+      "input": [[true]],
+      "expected": [[0]],
+      "actual": [[0]]
+    },
+    {
+      "name": "ordinary_3x3_matrix",
+      "precondition_lines": [4, 14, 18],
+      "input": [
+        [true, false, false],
+        [false, true, false],
+        [false, false, false]
+      ],
+      "expected": [
+        [1, 2, 1],
+        [2, 1, 1],
+        [1, 1, 1]
+      ],
+      "actual": [
+        [1, 2, 1],
+        [2, 1, 1],
+        [1, 1, 1]
+      ]
+    }
+  ],
+  "scaling_measurements": {
+    "10": {
+      "grid_dimension_N": 10,
+      "total_cells_M": 100,
+      "repetitions": 5,
+      "seeds": [101, 202, 303, 404, 505],
+      "durations_ms": [0.025375, 0.045084, 0.022167, 0.014833, 0.015083],
+      "neighbor_checks_per_run": [900, 900, 900, 900, 900],
+      "median_ms": 0.022167,
+      "range_ms": 0.030251,
+      "median_neighbor_checks": 900,
+      "range_neighbor_checks": 0
+    },
+    "20": {
+      "grid_dimension_N": 20,
+      "total_cells_M": 400,
+      "repetitions": 5,
+      "seeds": [101, 202, 303, 404, 505],
+      "durations_ms": [0.059916, 0.072542, 0.02825, 0.025125, 0.026792],
+      "neighbor_checks_per_run": [3600, 3600, 3600, 3600, 3600],
+      "median_ms": 0.02825,
+      "range_ms": 0.047417,
+      "median_neighbor_checks": 3600,
+      "range_neighbor_checks": 0
+    },
+    "40": {
+      "grid_dimension_N": 40,
+      "total_cells_M": 1600,
+      "repetitions": 5,
+      "seeds": [101, 202, 303, 404, 505],
+      "durations_ms": [0.083125, 0.077916, 0.121541, 0.0775, 0.078834],
+      "neighbor_checks_per_run": [14400, 14400, 14400, 14400, 14400],
+      "median_ms": 0.078834,
+      "range_ms": 0.044041,
+      "median_neighbor_checks": 14400,
+      "range_neighbor_checks": 0
+    }
+  }
+}
