@@ -24,3 +24,9 @@ test('Check if 1025 is a power of 2 or not:', () => {
   const res = IsPowerOfTwo(1025)
   expect(res).toBe(false)
 })
+
+test('Check negative numbers are not powers of 2:', () => {
+  expect(IsPowerOfTwo(-1)).toBe(false)
+  expect(IsPowerOfTwo(-2)).toBe(false)
+  expect(IsPowerOfTwo(-16)).toBe(false)
+})
