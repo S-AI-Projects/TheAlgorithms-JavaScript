@@ -1,0 +1,70 @@
+{
+  "task": "R50-T030",
+  "target": "Dynamic-Programming/Sliding-Window/PermutationinString.js::PermutationinString",
+  "passed": true,
+  "fixtures": [
+    {
+      "name": "smallest_valid_empty_strings",
+      "precondition_lines": [10, 11, 16, 25],
+      "input": {
+        "s1": "",
+        "s2": ""
+      },
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "smallest_valid_single_char_strings",
+      "precondition_lines": [10, 11, 25, 44],
+      "input": {
+        "s1": "a",
+        "s2": "a"
+      },
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "ordinary_input_positive",
+      "precondition_lines": [10, 11, 15, 52],
+      "input": {
+        "s1": "ab",
+        "s2": "eidbaooo"
+      },
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "ordinary_input_negative",
+      "precondition_lines": [10, 11, 15, 57],
+      "input": {
+        "s1": "ab",
+        "s2": "eidboaoo"
+      },
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "suffix_boundary_regression_input",
+      "precondition_lines": [10, 11, 26, 34],
+      "input": {
+        "s1": "a",
+        "s2": "ba"
+      },
+      "expected": true,
+      "actual": true
+    }
+  ],
+  "mutant_verification": {
+    "mutation_line": 26,
+    "original_code": "while (end < s2.length - 1) {",
+    "mutated_code": "while (end < s2.length - 2) {",
+    "distinguishing_input": {
+      "s1": "a",
+      "s2": "ba"
+    },
+    "expected_output": true,
+    "mutant_output": false,
+    "mutant_caught": true,
+    "mutant_exit_code": 1
+  }
+}
