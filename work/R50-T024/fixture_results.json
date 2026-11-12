@@ -1,0 +1,23 @@
+{
+  "status": "PASSED",
+  "task": "R50-T024",
+  "precondition_line": "Maths/ParityOutlier.js:9",
+  "smallest_valid_input": {
+    "input": [
+      1,
+      2
+    ],
+    "expected": 1
+  },
+  "ordinary_input": {
+    "input": [
+      1,
+      2,
+      16,
+      -8848,
+      5126
+    ],
+    "expected": 1
+  },
+  "property_tests_run": 100
+}
