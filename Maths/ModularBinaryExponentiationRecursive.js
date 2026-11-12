@@ -1,21 +1,22 @@
-/*
-  Modified from:
-    https://github.com/TheAlgorithms/Python/blob/master/maths/binary_exp_mod.py
+/**
+ * @function modularBinaryExponentiation
+ * @description Calculate (base^exponent) % mod recursively using binary exponentiation.
+ * @param {number} base
+ * @param {number} exponent
+ * @param {number} mod
+ * @returns {number}
+ */
+const isOddExponent = (exponent) => exponent % 2 !== 0
 
-  Explanation:
-    https://en.wikipedia.org/wiki/Exponentiation_by_squaring
-*/
+const modularBinaryExponentiation = (base, exponent, mod) => {
+  if (mod === 1) return 0
+  if (exponent === 0) return 1
 
-const modularBinaryExponentiation = (a, n, m) => {
-  // input: a: int, n: int, m: int
-  // returns: (a^n) % m: int
-  if (n === 0) {
-    return 1
-  } else if (n % 2 === 1) {
-    return (modularBinaryExponentiation(a, n - 1, m) * a) % m
+  if (isOddExponent(exponent)) {
+    return (base * modularBinaryExponentiation(base, exponent - 1, mod)) % mod
   } else {
-    const b = modularBinaryExponentiation(a, n / 2, m)
-    return (b * b) % m
+    const half = modularBinaryExponentiation(base, exponent / 2, mod)
+    return (half * half) % mod
   }
 }
 

@@ -1,0 +1,18 @@
+{
+  "status": "PASSED",
+  "task": "R50-T026",
+  "precondition_line": "Maths/ModularBinaryExponentiationRecursive.js:9",
+  "refactored_responsibility": "Extracted exponent parity evaluation into explicit isOddExponent helper",
+  "smallest_valid_input": {
+    "base": 2,
+    "exponent": 0,
+    "mod": 5,
+    "expected": 1
+  },
+  "ordinary_input": {
+    "base": 2,
+    "exponent": 10,
+    "mod": 1000,
+    "expected": 24
+  }
+}
