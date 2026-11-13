@@ -1,9 +1,14 @@
 /**
  * @function exponentialFunction
- * @description Calculates the n+1 th order Taylor series approximation of exponential function e^x given n
- * @param {Integer} power
- * @param {Integer} order - 1
- * @returns exponentialFunction(2,20) = 7.3890560989301735
+ * @description Calculates the n-th partial sum (or n+1 th order Taylor series approximation)
+ * of the exponential function e^power using Taylor expansion up to degree n-1.
+ * For example, for representative input power = 2 and n = 2:
+ * terms are (2^0 / 0!) + (2^1 / 1!) = 1 + 2 = 3.
+ *
+ * @param {number} power - The exponent x in e^x.
+ * @param {number} n - The order / number of terms to sum (n >= 0).
+ * @returns {number} The calculated approximation of e^power.
+ * @throws {TypeError} When power or n is NaN or n < 0.
  * @url https://en.wikipedia.org/wiki/Exponential_function
  */
 function exponentialFunction(power, n) {
