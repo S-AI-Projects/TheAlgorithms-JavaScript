@@ -71,4 +71,3 @@ describe('Maths/DecimalIsolate boundary and contract tests', () => {
     })
   })
 })
-
