@@ -12,6 +12,10 @@ import { isEven } from './IsEven'
  * @param {Integer} x - The input integer
  * @param {Integer} n - The input integer
  * @return {Integer} - Returns x^n.
+ * @example
+ * // For the odd exponent 5, reuse powLogarithmic(3, 2): 9 * 9 * 3 = 243.
+ * powLogarithmic(3, 5) // => 243
+ *
  * @see [Pow-Logarithmic](https://www.geeksforgeeks.org/write-a-c-program-to-calculate-powxn/)
  */
 const powLogarithmic = (x, n) => {
