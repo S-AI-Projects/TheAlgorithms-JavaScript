@@ -1,3 +1,8 @@
+/**
+ * Stores directed precedence edges and returns a depth-first topological order.
+ * Nodes are introduced by addOrder and converted to strings. The sorter assumes
+ * an acyclic graph; cycles are not reported as errors by this implementation.
+ */
 export function TopologicalSorter() {
   const graph = {}
   let isVisitedNode
@@ -51,13 +56,3 @@ export function TopologicalSorter() {
     })
   }
 }
-
-/* TEST */
-// const topoSorter = new TopologicalSorter()
-// topoSorter.addOrder(5, 2)
-// topoSorter.addOrder(5, 0)
-// topoSorter.addOrder(4, 0)
-// topoSorter.addOrder(4, 1)
-// topoSorter.addOrder(2, 3)
-// topoSorter.addOrder(3, 1)
-// topoSorter.sortAndGetOrderedItems()
