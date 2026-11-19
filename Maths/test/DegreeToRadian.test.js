@@ -19,3 +19,10 @@ test('should convert degree to radian:', () => {
   const radianEqual = degreeToRadian(180)
   expect(radianEqual).toBe(Math.PI)
 })
+
+test('repeated calls are deterministic and isolated from intervening inputs', () => {
+  const first = degreeToRadian(45)
+  expect(degreeToRadian(180)).toBe(Math.PI)
+  expect(degreeToRadian(45)).toBe(first)
+  expect(degreeToRadian(45)).toBe(Math.PI / 4)
+})
