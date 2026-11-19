@@ -3,6 +3,8 @@
  *
  * @param {number[]} arr - The input array of integers.
  * @returns {number} The unique element.
+ * @complexity O(n) time and O(1) auxiliary space, where n is arr.length.
+ * Each element is visited once by reduce and combined with one accumulator.
  *
  * @example
  * const arr = [1, 2, 1, 2, 3];

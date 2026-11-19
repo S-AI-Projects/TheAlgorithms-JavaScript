@@ -8,3 +8,7 @@ describe('UniqueElementInAnArray', () => {
     expect(findUniqueElement(arr)).toBe(expected)
   })
 })
+
+it('handles the smallest valid one-element input', () => {
+  expect(findUniqueElement([7])).toBe(7)
+})
