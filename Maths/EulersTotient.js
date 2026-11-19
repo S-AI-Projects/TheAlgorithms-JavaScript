@@ -6,6 +6,8 @@
 
   Complexity:
     O(sqrt(n))
+
+  Example: EulersTotient(9) is 6 because 1, 2, 4, 5, 7 and 8 are coprime to 9.
 */
 
 export const EulersTotient = (n) => {
