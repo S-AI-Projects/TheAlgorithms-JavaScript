@@ -9,3 +9,24 @@ describe('EulersTotient', () => {
     expect(EulersTotient(10)).toBe(4)
   })
 })
+
+const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b))
+const referenceTotient = (n) => {
+  let count = 0
+  for (let candidate = 1; candidate <= n; candidate++) {
+    if (gcd(candidate, n) === 1) count++
+  }
+  return count
+}
+
+describe('EulersTotient independent reference comparison', () => {
+  it('matches the coprime-count reference for every integer from 1 to 20', () => {
+    for (let n = 1; n <= 20; n++) {
+      expect(EulersTotient(n)).toBe(referenceTotient(n))
+    }
+  })
+
+  it('covers the smallest positive input', () => {
+    expect(EulersTotient(1)).toBe(1)
+  })
+})
