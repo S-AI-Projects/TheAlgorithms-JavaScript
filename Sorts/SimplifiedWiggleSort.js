@@ -4,33 +4,21 @@
  * KEEP IN MIND: there are also more strict definitions of wiggle sort which use
  * the rule arr[0] < arr[1] > arr[2] < arr[3] > arr[4] < … but this function
  * allows for equality of values next to each other.
+ * Sorts `arr` in place and returns a separate array in weak wiggle order.
  */
-import { quickSelectSearch } from '../Search/QuickSelectSearch.js'
-
 export const simplifiedWiggleSort = function (arr) {
-  // find Median using QuickSelect
-  let median = quickSelectSearch(arr, Math.floor(arr.length / 2.0))
-  median = median[Math.floor(arr.length / 2.0)]
-
-  const sorted = new Array(arr.length)
-
-  let smallerThanMedianIndx = 0
-  let greaterThanMedianIndx = arr.length - 1 - (arr.length % 2)
+  // Interleave the lower and upper sorted halves to satisfy the weak wiggle order.
+  const sorted = arr.sort((a, b) => a - b)
+  const result = new Array(arr.length)
+  const middle = Math.ceil(arr.length / 2)
 
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > median) {
-      sorted[greaterThanMedianIndx] = arr[i]
-      greaterThanMedianIndx -= 2
+    if (i % 2 === 0) {
+      result[i] = sorted[i / 2]
     } else {
-      if (smallerThanMedianIndx < arr.length) {
-        sorted[smallerThanMedianIndx] = arr[i]
-        smallerThanMedianIndx += 2
-      } else {
-        sorted[greaterThanMedianIndx] = arr[i]
-        greaterThanMedianIndx -= 2
-      }
+      result[i] = sorted[middle + Math.floor(i / 2)]
     }
   }
 
-  return sorted
+  return result
 }
