@@ -19,6 +19,7 @@ const backtrack = (s, path, result) => {
 
   for (let i = 0; i < s.length; i++) {
     const prefix = s.substring(0, i + 1)
+    // Only extend a partition with prefixes that are palindromes.
     if (palindrome(prefix)) {
       path.push(prefix)
       backtrack(s.substring(i + 1), path, result)
