@@ -10,3 +10,8 @@ describe('Softmax', () => {
     expect(Softmax([1, 2, 3, 4]).reduce((a, b) => a + b, 0)).toEqual(1)
   })
 })
+
+it('exposes the empty-input reduce failure and remains usable afterwards', () => {
+  expect(() => Softmax([])).toThrow(TypeError)
+  expect(Softmax([0])).toEqual([1])
+})
