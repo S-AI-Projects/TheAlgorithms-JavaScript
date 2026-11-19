@@ -3,7 +3,13 @@
  * https://en.wikipedia.org/wiki/Longest_increasing_subsequence
  */
 
-// Return the length of the Longest Increasing Subsequence, given array x
+/**
+ * Returns the length of the longest strictly increasing subsequence.
+ *
+ * @param {number[]} x - Input array of numbers.
+ * @returns {number} The subsequence length, or 0 for an empty array.
+ * The input array is read without being modified.
+ */
 function longestIncreasingSubsequence(x) {
   const length = x.length
   if (length == 0) {

@@ -22,3 +22,21 @@ describe('Testing longestIncreasingSubsequence', () => {
     expect(longestIncreasingSubsequence(input)).toBe(expected)
   })
 })
+
+describe('longestIncreasingSubsequence contract', () => {
+  // Source precondition: LongestIncreasingSubsequence.js returns 0 when x.length is 0.
+  it.each([
+    [[], 0],
+    [[3, 1, 2, 5, 4], 3],
+    [[2, 2, 2], 1]
+  ])('returns the expected length for %j', (input, expected) => {
+    expect(longestIncreasingSubsequence(input)).toBe(expected)
+  })
+
+  it('does not mutate the caller input', () => {
+    const input = [3, 1, 2, 5, 4]
+    const before = [...input]
+    expect(longestIncreasingSubsequence(input)).toBe(3)
+    expect(input).toEqual(before)
+  })
+})
