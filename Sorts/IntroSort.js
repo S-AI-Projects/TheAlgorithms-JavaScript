@@ -32,8 +32,8 @@ function introsort(array, compare) {
     if (x === undefined && y === undefined) return 0
     if (x === undefined) return 1
     if (y === undefined) return -1
-    const xString = toString(x)
-    const yString = toString(y)
+    const xString = toComparableString(x)
+    const yString = toComparableString(y)
     if (xString < yString) return -1
     if (xString > yString) return 1
     return 0
@@ -45,7 +45,8 @@ function introsort(array, compare) {
    * @param {Object} obj
    * @returns {String} String representation of given object
    */
-  const toString = function (obj) {
+  // Keep the default comparator's value-to-string conversion in one named helper.
+  const toComparableString = function (obj) {
     if (obj === null) return 'null'
     if (typeof obj === 'boolean' || typeof obj === 'number') {
       return obj.toString()
