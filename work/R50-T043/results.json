@@ -1,0 +1,223 @@
+{
+  "task_id": "R50-T043",
+  "timestamp": "2026-11-22T06:26:28Z",
+  "precondition_contract": {
+    "source_file": "String/CheckSnakeCase.js",
+    "precondition_lines": "12-14",
+    "precondition_code": "if (typeof varName !== 'string') { throw new TypeError('Argument is not a string.') }"
+  },
+  "tools": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "git_branch": "student/e26b07f0827/R50-T043",
+    "git_commit": "5c39e87a9a31f279c60f830ad74a845e4788a517"
+  },
+  "native_tests": {
+    "command": "npm test -- String/test/CheckSnakeCase.test.js",
+    "exit_code": 0,
+    "passed": true,
+    "test_count": 38
+  },
+  "oracle_checks": [
+    {
+      "name": "Smallest valid input: empty string \"\"",
+      "precondition_source_line": "String/CheckSnakeCase.js:12",
+      "input": "\"\"",
+      "expected": "false",
+      "actual": "false",
+      "passed": true,
+      "details": {
+        "oracleValue": false
+      }
+    },
+    {
+      "name": "Ordinary input: \"docker_build\"",
+      "precondition_source_line": "String/CheckSnakeCase.js:12",
+      "input": "\"docker_build\"",
+      "expected": "true",
+      "actual": "true",
+      "passed": true,
+      "details": {
+        "oracleValue": true
+      }
+    },
+    {
+      "name": "Oracle cross-check across 22 enumerated domain inputs",
+      "precondition_source_line": "String/CheckSnakeCase.js:12",
+      "input": "22 small valid strings",
+      "expected": "All actual outputs match independent oracle and expected table",
+      "actual": "All 22 matched perfectly",
+      "passed": true,
+      "details": {
+        "totalCases": 22,
+        "details": [
+          {
+            "input": "",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "a",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "A",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "word",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "camelCase",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "PascalCase",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "kebab-case",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "UPPERCASE",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "12345",
+            "expected": false,
+            "actual": false,
+            "oracle": false,
+            "ok": true
+          },
+          {
+            "input": "_",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "__",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "a_b",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "docker_build",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "snake_case",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "first_second_third",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "user_id",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "val_1",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "1_2",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "CONSTANT_CASE",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "trailing_",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "_leading",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          },
+          {
+            "input": "multiple___underscores",
+            "expected": true,
+            "actual": true,
+            "oracle": true,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "Precondition enforcement on non-string inputs (TypeError)",
+      "precondition_source_line": "String/CheckSnakeCase.js:12-13",
+      "input": "10 non-string types [numbers, null, undefined, boolean, objects, arrays, functions]",
+      "expected": "Throws TypeError(\"Argument is not a string.\")",
+      "actual": "Threw TypeError(\"Argument is not a string.\") for all",
+      "passed": true,
+      "details": {}
+    }
+  ],
+  "all_passed": true
+}
