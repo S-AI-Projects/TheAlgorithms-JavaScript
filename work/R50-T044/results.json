@@ -1,0 +1,87 @@
+{
+  "task_id": "R50-T044",
+  "timestamp": "2026-11-22T06:34:50Z",
+  "precondition_contract": {
+    "source_file": "Conversions/MeterToFeetConversion.js",
+    "precondition_lines": "18",
+    "precondition_code": "const feetToMeter = (feet) => { return feet * 0.3048 }"
+  },
+  "tools": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "git_branch": "student/e26b07f0827/R50-T044",
+    "git_commit": "5c39e87a9a31f279c60f830ad74a845e4788a517"
+  },
+  "native_tests": {
+    "command": "npm test -- Conversions/test/MeterToFeetConversion.test.js",
+    "exit_code": 0,
+    "passed": true,
+    "test_count": 9
+  },
+  "property_checks": [
+    {
+      "name": "Smallest valid input: 0 feet",
+      "precondition_source_line": "Conversions/MeterToFeetConversion.js:18",
+      "input": "0",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Ordinary input: 10 feet",
+      "precondition_source_line": "Conversions/MeterToFeetConversion.js:18",
+      "input": "10",
+      "expected": "3.048",
+      "actual": "3.048",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Ratio Invariant across 100 bounded valid cases",
+      "precondition_source_line": "Conversions/MeterToFeetConversion.js:18",
+      "input": "100 bounded values in [0.01, 1000.0]",
+      "expected": "Math.abs(feetToMeter(x) / x - 0.3048) < 1e-12",
+      "actual": "maxRatioErr = 5.5511e-17",
+      "passed": true,
+      "details": {
+        "sampleCount": 100,
+        "maxRatioErr": 5.551115123125783e-17
+      }
+    },
+    {
+      "name": "Round-trip Invertibility across 100 bounded valid cases",
+      "precondition_source_line": "Conversions/MeterToFeetConversion.js:18",
+      "input": "100 bounded values in [0.01, 1000.0]",
+      "expected": "Math.abs(meterToFeet(feetToMeter(x)) - x) < 1e-9",
+      "actual": "maxRoundTripErr = 1.1369e-13",
+      "passed": true,
+      "details": {
+        "sampleCount": 100,
+        "maxRoundTripErr": 1.1368683772161603e-13
+      }
+    },
+    {
+      "name": "Linearity Invariant: feetToMeter(a + b) === feetToMeter(a) + feetToMeter(b)",
+      "precondition_source_line": "Conversions/MeterToFeetConversion.js:18",
+      "input": "50 disjoint pairs from bounded cases",
+      "expected": "Math.abs(feetToMeter(a + b) - (feetToMeter(a) + feetToMeter(b))) < 1e-9",
+      "actual": "maxLinearErr = 5.6843e-14",
+      "passed": true,
+      "details": {
+        "maxLinearErr": 5.684341886080802e-14
+      }
+    },
+    {
+      "name": "Deliberately broken mutant detection verification",
+      "precondition_source_line": "Conversions/MeterToFeetConversion.js:18",
+      "input": "mutant with scale 0.30 instead of 0.3048",
+      "expected": "Ratio check must detect defect and fail",
+      "actual": "Detected defect with discrepancy 0.0048 > 1e-3",
+      "passed": true,
+      "details": {}
+    }
+  ],
+  "all_passed": true
+}
