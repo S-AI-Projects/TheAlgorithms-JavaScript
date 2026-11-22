@@ -1,15 +1,28 @@
-/*
- * Places the `k` smallest elements in `array` in the first `k` indices: `[0..k-1]`
- * Modifies the passed in array *in place*
- * Returns a slice of the wanted elements for convenience
- * Efficient mainly because it never performs a full sort.
+/**
+ * Quickselect algorithm to place the `k`-th smallest element in its final sorted index `k`,
+ * partitioning elements in-place: all elements at indices < `k` are <= array[k], and
+ * all elements at indices > `k` are >= array[k].
  *
- * The only guarantees are that:
+ * Supported Boundary Contract:
+ * - Precondition check established at Line 15: `if (!array || array.length <= k)`
+ * - Supported domain:
+ *   - `array`: Non-empty Array of comparable numbers (`array.length >= 1`).
+ *   - `k`: 0-based integer index within `[0, array.length - 1]`.
+ * - Smallest valid input boundary:
+ *   - Single-element array (`array.length === 1`) with `k === 0`.
+ * - Upper valid domain boundary:
+ *   - Any non-empty array with `k === array.length - 1`.
+ * - Unsupported domain (throws `new Error('Invalid arguments')` at Line 16):
+ *   - Falsy arrays (`!array`): `null`, `undefined`.
+ *   - Empty arrays (`array.length === 0 <= k`).
+ *   - Out-of-bounds index (`k >= array.length`).
  *
- * - The `k`th element is in its final sort index (if the array were to be sorted)
- * - All elements before index `k` are smaller than the `k`th element
+ * @param {Array<number>} array - The input array to partition in-place.
+ * @param {number} k - The 0-based target index to position (0 <= k < array.length).
+ * @returns {Array<number>} The mutated array with the k-th element in its final sorted index.
+ * @throws {Error} 'Invalid arguments' when array is falsy or array.length <= k (Line 15).
  *
- * [Reference](http://en.wikipedia.org/wiki/Quickselect)
+ * Reference: http://en.wikipedia.org/wiki/Quickselect
  */
 export function quickSelectSearch(array, k) {
   if (!array || array.length <= k) {
@@ -46,10 +59,3 @@ export function quickSelectSearch(array, k) {
   }
   return array
 }
-
-/* ---------------------------------- Test ---------------------------------- */
-
-// const arr = [1121111, 21, 333, 41, 5, 66, 7777, 28, 19, 11110]
-// quickSelectSearch(arr, 5) // [ 19, 21, 28, 41, 5, 66, 333, 11110, 1121111, 7777 ]
-// quickSelectSearch(arr, 2) // [ 19, 5, 21, 41, 28, 333, 11110, 1121111, 7777, 66 ]
-// quickSelectSearch(arr, 7) // [ 19, 5, 21, 41, 28, 66, 333, 7777, 11110, 1121111 ]
