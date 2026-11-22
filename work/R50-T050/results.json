@@ -1,0 +1,118 @@
+{
+  "task_id": "R50-T050",
+  "target": "Maths/ArmstrongNumber.js",
+  "tested_function": "armstrongNumber",
+  "timestamp": "2026-11-22T07:52:23.087791+00:00",
+  "tool_versions": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "vitest": "vitest/1.2.1 darwin-arm64 node-v26.13.1"
+  },
+  "native_test": {
+    "command": "npm test -- Maths/test/ArmstrongNumber.test.js",
+    "exit_code": 0,
+    "tests_passed": 9
+  },
+  "original_assertions": [
+    {
+      "name": "smallest_valid_input_0",
+      "precondition_source_line": "Line 24 (if (typeof num !== 'number' || num < 0) return false)",
+      "input": 0,
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "protected_condition": "Boundary check permits 0 as a valid non-negative integer (0^1 = 0)"
+    },
+    {
+      "name": "single_digit_armstrong_5",
+      "precondition_source_line": "Line 24..29 (5^1 = 5)",
+      "input": 5,
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "protected_condition": "Single-digit integers evaluate to identity"
+    },
+    {
+      "name": "ordinary_armstrong_370",
+      "precondition_source_line": "Line 24..29 (3^3 + 7^3 + 0^3 = 370)",
+      "input": 370,
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "protected_condition": "3-digit Armstrong number matches digit sum of cubes"
+    },
+    {
+      "name": "ordinary_armstrong_371",
+      "precondition_source_line": "Line 24..29 (3^3 + 7^3 + 1^3 = 371)",
+      "input": 371,
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "protected_condition": "3-digit Armstrong number matches digit sum of cubes"
+    },
+    {
+      "name": "multi_digit_armstrong_1634",
+      "precondition_source_line": "Line 27 ((acc, digit) => acc + parseInt(digit) ** numStr.length)",
+      "input": 1634,
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "protected_condition": "Dynamic exponentiation with numStr.length = 4 (1^4 + 6^4 + 3^4 + 4^4 = 1634)"
+    },
+    {
+      "name": "ordinary_non_armstrong_300",
+      "precondition_source_line": "Line 24..29 (3^3 + 0^3 + 0^3 = 27 != 300)",
+      "input": 300,
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "protected_condition": "Non-Armstrong number rejected"
+    },
+    {
+      "name": "ordinary_non_armstrong_10",
+      "precondition_source_line": "Line 24..29 (1^2 + 0^2 = 1 != 10)",
+      "input": 10,
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "protected_condition": "2-digit non-Armstrong number rejected"
+    },
+    {
+      "name": "negative_input_minus_2",
+      "precondition_source_line": "Line 24 (num < 0 guard)",
+      "input": -2,
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "protected_condition": "Negative numbers rejected at boundary guard"
+    }
+  ],
+  "mutant_proofs": [
+    {
+      "mutant_name": "mutant1_boundary_off_by_one",
+      "description": "Altered Line 24 boundary from `num < 0` to `num <= 0`",
+      "targeted_assertion": "smallest_valid_input_0",
+      "input": 0,
+      "expected": true,
+      "original_output": true,
+      "original_passed": true,
+      "mutant_output": false,
+      "mutant_failed_as_expected": true,
+      "semantic_reason": "Mutant erroneously rejected smallest valid input 0 due to off-by-one `<=` check"
+    },
+    {
+      "mutant_name": "mutant2_hardcoded_cube_power",
+      "description": "Altered Line 27 accumulation from `** numStr.length` to `** 3`",
+      "targeted_assertion": "multi_digit_armstrong_1634",
+      "input": 1634,
+      "expected": true,
+      "original_output": true,
+      "original_passed": true,
+      "mutant_output": false,
+      "mutant_failed_as_expected": true,
+      "semantic_reason": "Mutant hardcoded cube power yielding 308 instead of 1634, failing 4-digit Armstrong validation"
+    }
+  ],
+  "status": "PASSED"
+}
