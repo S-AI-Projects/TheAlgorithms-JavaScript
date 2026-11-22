@@ -1,0 +1,96 @@
+{
+  "task_id": "R50-T041",
+  "timestamp": "2026-11-22T06:05:51Z",
+  "tools": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "git_branch": "student/e26b07f0827/R50-T041",
+    "git_commit": "5c39e87a9a31f279c60f830ad74a845e4788a517"
+  },
+  "native_tests": {
+    "command": "npm test -- Data-Structures/Linked-List/test/ReverseSinglyLinkedList.test.js",
+    "exit_code": 0,
+    "passed": true,
+    "test_count": 6
+  },
+  "contract_checks": [
+    {
+      "name": "Stated Fixture: Return value identity",
+      "input": "A -> B -> C",
+      "expected": "Returned head reference === Node C",
+      "actual": "Returned head reference === Node C",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Stated Fixture: Node links separated from values",
+      "input": "nodeA -> nodeB -> nodeC",
+      "expected": "C.next === B, B.next === A, A.next === null",
+      "actual": "C.next: B, B.next: A, A.next: null",
+      "passed": true,
+      "details": {
+        "link1": true,
+        "link2": true,
+        "link3": true
+      }
+    },
+    {
+      "name": "Stated Fixture: Node values along reversed links",
+      "input": "nodeA(\"A\") -> nodeB(\"B\") -> nodeC(\"C\")",
+      "expected": "values: [\"C\", \"B\", \"A\"]",
+      "actual": "values: [\"C\", \"B\", \"A\"]",
+      "passed": true,
+      "details": {
+        "val1": true,
+        "val2": true,
+        "val3": true
+      }
+    },
+    {
+      "name": "Stated Fixture: Observable mutations on original nodes",
+      "input": "original node instances nodeA, nodeB, nodeC",
+      "expected": "nodeA.next === null, nodeB.next === nodeA, nodeC.next === nodeB (data unmutated)",
+      "actual": "nodeA.next: null, nodeB.next: nodeA, nodeC.next: nodeB",
+      "passed": true,
+      "details": {
+        "mutA": true,
+        "mutB": true,
+        "mutC": true
+      }
+    },
+    {
+      "name": "Smallest supported input: null (empty list)",
+      "input": "null",
+      "expected": "null",
+      "actual": "null",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Smallest supported input: single node",
+      "input": "Node(\"single_val\")",
+      "expected": "Reference to same node with next === null and data === \"single_val\"",
+      "actual": "refMatch: true, data: \"single_val\", next: null",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Repeated-value domain boundary: duplicate node values with distinct references",
+      "input": "d1(\"dup\") -> d2(\"dup\") -> d3(\"dup\")",
+      "expected": "Identity: d3 -> d2 -> d1 -> null; all values === \"dup\"",
+      "actual": "refOk: true, valOk: true",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Ordinary input: [10, 20, 30, 40]",
+      "input": "[10, 20, 30, 40]",
+      "expected": "[40, 30, 20, 10]",
+      "actual": "[40,30,20,10]",
+      "passed": true,
+      "details": {}
+    }
+  ],
+  "all_passed": true
+}
