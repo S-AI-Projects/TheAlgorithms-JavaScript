@@ -1,17 +1,20 @@
-/*
-  Program to get the Nth Lucas Number
-  Article on Lucas Number: https://en.wikipedia.org/wiki/Lucas_number
-  Examples:
-    > loopLucas(1)
-    1
-    > loopLucas(20)
-    15127
-    > loopLucas(100)
-    792070839848372100000
-*/
-
 /**
- * @param {Number} index The position of the number you want to get from the Lucas Series
+ * Calculates the Nth Lucas Number.
+ * The Lucas sequence is defined as L_0 = 2, L_1 = 1, and L_n = L_{n-1} + L_{n-2} for n >= 2.
+ *
+ * Preconditions:
+ * - Line 21: `if (index < 0)` throws TypeError('Index cannot be Negative')
+ * - Line 24: `if (Math.floor(index) !== index)` throws TypeError('Index cannot be a Decimal')
+ *
+ * Refactoring Note:
+ * Clarified state management in the iterative recurrence calculation by replacing
+ * ambiguous variables `a`, `b`, and `temp` with semantically descriptive variables
+ * `current` (representing L_i) and `next` (representing L_{i+1}).
+ *
+ * @param {number} index The 0-based position of the number in the Lucas sequence.
+ * @returns {number} The Nth Lucas Number.
+ * @throws {TypeError} If index is negative or decimal.
+ * @see https://en.wikipedia.org/wiki/Lucas_number
  */
 function lucas(index) {
   // index can't be negative
@@ -21,14 +24,14 @@ function lucas(index) {
   if (Math.floor(index) !== index)
     throw new TypeError('Index cannot be a Decimal')
 
-  let a = 2
-  let b = 1
+  let current = 2
+  let next = 1
   for (let i = 0; i < index; i++) {
-    const temp = a + b
-    a = b
-    b = temp
+    const nextLucas = current + next
+    current = next
+    next = nextLucas
   }
-  return a
+  return current
 }
 
 export { lucas }
