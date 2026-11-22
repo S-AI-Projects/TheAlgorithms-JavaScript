@@ -1,0 +1,120 @@
+{
+  "task_id": "R50-T048",
+  "target": "Graphs/FloydWarshall.js",
+  "tested_function": "FloydWarshall",
+  "timestamp": "2026-11-22T07:44:05.983922+00:00",
+  "tool_versions": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "vitest": "vitest/1.2.1 darwin-arm64 node-v26.13.1"
+  },
+  "native_test": {
+    "command": "npm test -- Graphs/test/FloydWarshall.test.js",
+    "exit_code": 0,
+    "tests_passed": 6
+  },
+  "assertions": [
+    {
+      "name": "smallest_valid_input_1x1",
+      "precondition_source_line": "Line 24 (const n = dist.length = 1)",
+      "input": [[0]],
+      "expected": [[0]],
+      "actual": [[0]],
+      "passed": true
+    },
+    {
+      "name": "empty_result_path_0x0",
+      "precondition_source_line": "Line 24 (n = 0) -> Line 25 (loop skipped) -> Line 35 (return dist)",
+      "input": [],
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "name": "absent_path_disconnected_sentinel",
+      "precondition_source_line": "Line 28 (dist[i][j] > dist[i][k] + dist[k][j] evaluates false) -> preserves Infinity",
+      "input": [
+        [0, "Infinity"],
+        ["Infinity", 0]
+      ],
+      "expected": [
+        [0, "Infinity"],
+        ["Infinity", 0]
+      ],
+      "actual": [
+        [0, "Infinity"],
+        ["Infinity", 0]
+      ],
+      "passed": true
+    },
+    {
+      "name": "ordinary_input_4x4",
+      "precondition_source_line": "Line 24..35 (full iterative relaxation across 4 vertices)",
+      "input": [
+        [0, 1, 2, "Infinity"],
+        [1, 0, "Infinity", "Infinity"],
+        [2, "Infinity", 0, 1],
+        ["Infinity", "Infinity", 1, 0]
+      ],
+      "expected": [
+        [0, 1, 2, 3],
+        [1, 0, 3, 4],
+        [2, 3, 0, 1],
+        [3, 4, 1, 0]
+      ],
+      "actual": [
+        [0, 1, 2, 3],
+        [1, 0, 3, 4],
+        [2, 3, 0, 1],
+        [3, 4, 1, 0]
+      ],
+      "passed": true
+    },
+    {
+      "name": "ordinary_directed_graph_5x5",
+      "precondition_source_line": "Line 24..35 (relaxation with negative weights)",
+      "input": [
+        [0, 3, 8, "Infinity", -4],
+        ["Infinity", 0, "Infinity", 1, 7],
+        ["Infinity", 4, 0, "Infinity", "Infinity"],
+        [2, "Infinity", -5, 0, "Infinity"],
+        ["Infinity", "Infinity", "Infinity", 6, 0]
+      ],
+      "expected": [
+        [0, 1, -3, 2, -4],
+        [3, 0, -4, 1, -1],
+        [7, 4, 0, 5, 3],
+        [2, -1, -5, 0, -2],
+        [8, 5, 1, 6, 0]
+      ],
+      "actual": [
+        [0, 1, -3, 2, -4],
+        [3, 0, -4, 1, -1],
+        [7, 4, 0, 5, 3],
+        [2, -1, -5, 0, -2],
+        [8, 5, 1, 6, 0]
+      ],
+      "passed": true
+    },
+    {
+      "name": "sequential_call_after_failure_or_empty",
+      "precondition_source_line": "Line 24..35 (valid execution after empty branch)",
+      "input": "FloydWarshall([]) then FloydWarshall(ordinaryInput)",
+      "expected": [
+        [0, 1, 2, 3],
+        [1, 0, 3, 4],
+        [2, 3, 0, 1],
+        [3, 4, 1, 0]
+      ],
+      "actual": [
+        [0, 1, 2, 3],
+        [1, 0, 3, 4],
+        [2, 3, 0, 1],
+        [3, 4, 1, 0]
+      ],
+      "passed": true
+    }
+  ],
+  "status": "PASSED"
+}
