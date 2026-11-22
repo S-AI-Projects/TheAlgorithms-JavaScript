@@ -29,17 +29,50 @@
 // Set a tolerance value for floating-point comparisons
 const tolerance = 0.000001
 
-// Check if all the rows have same length of elements
+/**
+ * Validates whether the given input is a valid two-dimensional rectangular matrix.
+ *
+ * Trace & Decisive State Transition:
+ * 1. Initial State: Validates outer structure. Input must be a non-empty array whose first row is an array.
+ * 2. Dimension Target: Establishes expected column count `numCols = matrix[0].length`.
+ * 3. Row Inspection & Decisive Transition: Iterates across row indices `i` (0 <= i < numRows).
+ *    - Decisive failure: If any row `matrix[i]` is not an array or `matrix[i].length !== numCols`,
+ *      the validation transitions immediately to `false` (early exit).
+ *    - Decisive success: If every row matches `numCols`, the validation transitions to `true`.
+ *
+ * @param {any} matrix - Two-dimensional array candidate to validate.
+ * @returns {boolean} True if matrix is a valid rectangular 2D array; false otherwise.
+ *
+ * @example
+ * // Example 1: Small rectangular matrix (2 rows x 3 columns)
+ * // Input: [[1, 2, 3], [4, 5, 6]]
+ * // numCols = 3; row 0 length = 3; row 1 length = 3.
+ * // Output: true
+ * isMatrixValid([[1, 2, 3], [4, 5, 6]]) // => true
+ *
+ * @example
+ * // Example 2: 1x1 matrix (1 row x 1 column)
+ * // Input: [[42]]
+ * // numCols = 1; row 0 length = 1.
+ * // Output: true
+ * isMatrixValid([[42]]) // => true
+ *
+ * @example
+ * // Example 3: Zero-containing matrix (2 rows x 2 columns)
+ * // Input: [[0, 5], [0, 0]]
+ * // numCols = 2; row 0 length = 2; row 1 length = 2.
+ * // Output: true
+ * isMatrixValid([[0, 5], [0, 0]]) // => true
+ *
+ * @example
+ * // Example 4: Non-uniform / ragged matrix (decisive failure transition)
+ * // Input: [[1, 2], [3]]
+ * // numCols = 2; row 0 length = 2; row 1 length = 1 !== 2 (decisive transition -> false).
+ * // Output: false
+ * isMatrixValid([[1, 2], [3]]) // => false
+ */
 const isMatrixValid = (matrix) => {
-  let numRows = matrix.length
-  let numCols = matrix[0].length
-  for (let i = 0; i < numRows; i++) {
-    if (numCols !== matrix[i].length) {
-      return false
-    }
-  }
-
-  // Check for input other than a 2D matrix
+  // Check for input other than a non-empty 2D matrix
   if (
     !Array.isArray(matrix) ||
     matrix.length === 0 ||
@@ -47,6 +80,17 @@ const isMatrixValid = (matrix) => {
   ) {
     return false
   }
+
+  const numRows = matrix.length
+  const numCols = matrix[0].length
+
+  for (let i = 0; i < numRows; i++) {
+    // Decisive transition: any row length deviation marks the matrix as invalid
+    if (!Array.isArray(matrix[i]) || matrix[i].length !== numCols) {
+      return false
+    }
+  }
+
   return true
 }
 
@@ -147,4 +191,4 @@ const rowEchelon = (matrix) => {
   return result
 }
 
-export { rowEchelon }
+export { rowEchelon, isMatrixValid }

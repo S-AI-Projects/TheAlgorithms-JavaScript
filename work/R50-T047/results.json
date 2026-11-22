@@ -1,0 +1,133 @@
+{
+  "task_id": "R50-T047",
+  "target": "Maths/RowEchelon.js",
+  "tested_function": "isMatrixValid",
+  "timestamp": "2026-11-22T07:40:13.548616+00:00",
+  "tool_versions": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "vitest": "vitest/1.2.1 darwin-arm64 node-v26.13.1"
+  },
+  "native_test": {
+    "command": "npm test -- Maths/test/RowEchelon.test.js",
+    "exit_code": 0,
+    "tests_passed": 12
+  },
+  "assertions": [
+    {
+      "name": "small_rectangular_matrix_2x3",
+      "input": [
+        [1, 2, 3],
+        [4, 5, 6]
+      ],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "small_rectangular_matrix_3x2",
+      "input": [
+        [1, 2],
+        [3, 4],
+        [5, 6]
+      ],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "1x1_matrix",
+      "input": [[42]],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "1x1_matrix_zero",
+      "input": [[0]],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "zero_containing_matrix_2x2",
+      "input": [
+        [0, 5],
+        [0, 0]
+      ],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "zero_containing_matrix_all_zero_rectangular",
+      "input": [
+        [0, 0, 0],
+        [0, 0, 0]
+      ],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "doc_example_rectangular_2x3",
+      "input": [
+        [1, 2, 3],
+        [4, 5, 6]
+      ],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "doc_example_1x1",
+      "input": [[42]],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "doc_example_zero_containing",
+      "input": [
+        [0, 5],
+        [0, 0]
+      ],
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "doc_example_ragged_rejection",
+      "input": [[1, 2], [3]],
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "ragged_matrix_deviation",
+      "input": [
+        [1, 2, 3],
+        [4, 5]
+      ],
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "empty_matrix",
+      "input": [],
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "row_echelon_1x1_transform",
+      "input": [[1]],
+      "expected": [[1]],
+      "actual": [[1]],
+      "passed": true
+    }
+  ],
+  "status": "PASSED"
+}

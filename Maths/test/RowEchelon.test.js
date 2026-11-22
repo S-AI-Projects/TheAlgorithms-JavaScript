@@ -1,4 +1,4 @@
-import { rowEchelon } from '../RowEchelon'
+import { rowEchelon, isMatrixValid } from '../RowEchelon'
 describe('Determinant', () => {
   const tolerance = 0.000001
   test.each([
@@ -85,5 +85,119 @@ describe('Determinant', () => {
     ]
   ])('Should return the error message.', (matrix, expected) => {
     expect(() => rowEchelon(matrix)).toThrowError(expected)
+  })
+})
+
+describe('isMatrixValid', () => {
+  test('validates small rectangular matrix fixture', () => {
+    const rectangularMatrix = [
+      [1, 2, 3],
+      [4, 5, 6]
+    ]
+    expect(isMatrixValid(rectangularMatrix)).toBe(true)
+
+    const tallRectangularMatrix = [
+      [1, 2],
+      [3, 4],
+      [5, 6]
+    ]
+    expect(isMatrixValid(tallRectangularMatrix)).toBe(true)
+  })
+
+  test('validates 1x1 matrix fixture', () => {
+    const singleElementMatrix = [[42]]
+    expect(isMatrixValid(singleElementMatrix)).toBe(true)
+
+    const singleZeroMatrix = [[0]]
+    expect(isMatrixValid(singleZeroMatrix)).toBe(true)
+  })
+
+  test('validates zero-containing matrix fixture', () => {
+    const zeroContainingMatrix = [
+      [0, 5],
+      [0, 0]
+    ]
+    expect(isMatrixValid(zeroContainingMatrix)).toBe(true)
+
+    const allZeroRectangular = [
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
+    expect(isMatrixValid(allZeroRectangular)).toBe(true)
+  })
+
+  test('executes and asserts JSDoc documentation examples', () => {
+    // Example 1: Small rectangular matrix (2x3)
+    expect(
+      isMatrixValid([
+        [1, 2, 3],
+        [4, 5, 6]
+      ])
+    ).toBe(true)
+
+    // Example 2: 1x1 matrix
+    expect(isMatrixValid([[42]])).toBe(true)
+
+    // Example 3: Zero-containing matrix (2x2)
+    expect(
+      isMatrixValid([
+        [0, 5],
+        [0, 0]
+      ])
+    ).toBe(true)
+
+    // Example 4: Non-uniform / ragged matrix (decisive failure transition)
+    expect(isMatrixValid([[1, 2], [3]])).toBe(false)
+  })
+
+  test('rejects ragged matrices (decisive row length transition)', () => {
+    expect(
+      isMatrixValid([
+        [1, 2, 3],
+        [4, 5]
+      ])
+    ).toBe(false)
+    expect(
+      isMatrixValid([
+        [1, 2],
+        [3, 4, 5]
+      ])
+    ).toBe(false)
+  })
+
+  test('rejects non-matrix inputs and empty structures', () => {
+    expect(isMatrixValid([])).toBe(false)
+    expect(isMatrixValid(null)).toBe(false)
+    expect(isMatrixValid(undefined)).toBe(false)
+    expect(isMatrixValid('not a matrix')).toBe(false)
+    expect(isMatrixValid(123)).toBe(false)
+    expect(isMatrixValid([1, 2, 3])).toBe(false)
+    expect(isMatrixValid([[1, 2], 'not an array'])).toBe(false)
+  })
+
+  test('works consistently with rowEchelon on valid fixtures', () => {
+    // 1x1 matrix in rowEchelon
+    expect(rowEchelon([[42]])).toEqual([[1]])
+
+    // Rectangular 2x3 matrix in rowEchelon
+    const rect = [
+      [1, 2, 3],
+      [4, 5, 6]
+    ]
+    const rectResult = rowEchelon(rect)
+    expect(rectResult.length).toBe(2)
+    expect(rectResult[0].length).toBe(3)
+    expect(rectResult[0][0]).toBeCloseTo(1)
+    expect(rectResult[1][0]).toBeCloseTo(0)
+
+    // Zero-containing matrix in rowEchelon
+    const zeroMat = [
+      [0, 2],
+      [3, 0]
+    ]
+    const zeroResult = rowEchelon(zeroMat)
+    expect(zeroResult[0][0]).toBeCloseTo(1)
+    expect(zeroResult[1][0]).toBeCloseTo(0)
+    expect(zeroResult[1][1]).toBeCloseTo(1)
   })
 })
