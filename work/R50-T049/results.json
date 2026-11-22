@@ -1,0 +1,111 @@
+{
+  "task_id": "R50-T049",
+  "target": "Data-Structures/Linked-List/AddTwoNumbers.js",
+  "tested_function": "AddTwoNumbers.solution",
+  "timestamp": "2026-11-22T07:49:09.281176+00:00",
+  "tool_versions": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "vitest": "vitest/1.2.1 darwin-arm64 node-v26.13.1"
+  },
+  "complexity_statement": {
+    "input_size_variable": "L = max(M, N)",
+    "theoretical_worst_case_time": "O(max(M, N))",
+    "theoretical_worst_case_space": "O(max(M, N))",
+    "empirical_observation": "Empirical runtime scales linearly with input length L across {100, 1000, 10000} nodes without non-linear deviation."
+  },
+  "native_test": {
+    "command": "npm test -- Data-Structures/Linked-List/test/AddTwoNumbers.test.js",
+    "exit_code": 0,
+    "tests_passed": 4
+  },
+  "fixture_checks": {
+    "fixture_abc_and_smallest": {
+      "input_A_B_C": [2, 4, 3],
+      "input_smallest": [5],
+      "expected_values": [7, 4, 3],
+      "link_checks": {
+        "head_not_null": true,
+        "first_next_not_null": true,
+        "second_next_not_null": true,
+        "third_next_is_null": true
+      },
+      "value_checks": {
+        "val0": true,
+        "val1": true,
+        "val2": true,
+        "full_array": true
+      },
+      "links_passed": true,
+      "values_passed": true
+    },
+    "fixture_smallest_carry": {
+      "input1": [5],
+      "input2": [5],
+      "expected_values": [0, 1],
+      "link_checks": {
+        "head_not_null": true,
+        "first_next_not_null": true,
+        "second_next_is_null": true
+      },
+      "value_checks": {
+        "val0": true,
+        "val1": true,
+        "full_array": true
+      },
+      "links_passed": true,
+      "values_passed": true
+    }
+  },
+  "scaling_experiment": {
+    "input_size_variable": "L = max(M, N)",
+    "sizes": [100, 1000, 10000],
+    "repetitions_per_size": 5,
+    "benchmark": [
+      {
+        "input_size_L": 100,
+        "repetitions": 5,
+        "times_ms": [
+          0.004707999999999046, 0.0061669999999995895, 0.008416999999999675,
+          0.008458000000000965, 0.010041999999998552
+        ],
+        "median_ms": 0.0084,
+        "min_ms": 0.0047,
+        "max_ms": 0.01,
+        "range_ms": 0.0053,
+        "result_length": 101,
+        "correctness_verified": true
+      },
+      {
+        "input_size_L": 1000,
+        "repetitions": 5,
+        "times_ms": [
+          0.02616700000000094, 0.04533300000000118, 0.0612919999999999,
+          0.11358300000000021, 0.21025000000000027
+        ],
+        "median_ms": 0.0613,
+        "min_ms": 0.0262,
+        "max_ms": 0.2103,
+        "range_ms": 0.1841,
+        "result_length": 1001,
+        "correctness_verified": true
+      },
+      {
+        "input_size_L": 10000,
+        "repetitions": 5,
+        "times_ms": [
+          0.24462500000000098, 0.2715829999999997, 0.2725419999999996,
+          0.2861670000000007, 0.5525420000000008
+        ],
+        "median_ms": 0.2725,
+        "min_ms": 0.2446,
+        "max_ms": 0.5525,
+        "range_ms": 0.3079,
+        "result_length": 10000,
+        "correctness_verified": true
+      }
+    ]
+  },
+  "status": "PASSED"
+}
