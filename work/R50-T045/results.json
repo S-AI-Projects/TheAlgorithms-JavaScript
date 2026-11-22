@@ -1,0 +1,102 @@
+{
+  "task_id": "R50-T045",
+  "timestamp": "2026-11-22T06:41:37Z",
+  "preconditions": {
+    "source_file": "String/CheckRearrangePalindrome.js",
+    "type_check_line": "19: if (typeof str !== 'string') return 'Not a string'",
+    "empty_check_line": "23: if (!str) return 'Empty string'",
+    "normalization_policy": "No normalization performed (case-sensitive exact character counting)"
+  },
+  "tools": {
+    "python": "3.15.2",
+    "node": "v26.13.1",
+    "npm": "11.20.0",
+    "git_branch": "student/e26b07f0827/R50-T045",
+    "git_commit": "5c39e87a9a31f279c60f830ad74a845e4788a517"
+  },
+  "native_tests": {
+    "command": "npm test -- String/test/CheckRearrangePalindrome.test.js",
+    "exit_code": 0,
+    "passed": true,
+    "test_count": 13
+  },
+  "repeatability_checks": [
+    {
+      "name": "Stated Fixture: empty string",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:23",
+      "input": "\"\"",
+      "expected": "\"Empty string\"",
+      "actual": "\"Empty string\"",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Stated Fixture: single character \"a\"",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:19,23",
+      "input": "\"a\"",
+      "expected": "true",
+      "actual": "true",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Stated Fixture: odd palindrome \"aba\"",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:19,23",
+      "input": "\"aba\"",
+      "expected": "true",
+      "actual": "true",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Stated Fixture: non-palindrome \"ab\"",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:19,23",
+      "input": "\"ab\"",
+      "expected": "false",
+      "actual": "false",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Stated Fixture: even palindrome \"abba\"",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:19,23",
+      "input": "\"abba\"",
+      "expected": "true",
+      "actual": "true",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Normalization Policy: Case-sensitive, no normalization performed",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:28-33",
+      "input": "[\"Aa\", \"AAaa\"]",
+      "expected": "Aa -> false, AAaa -> true",
+      "actual": "Aa -> false, AAaa -> true",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Repeatability & Input Isolation: 3 consecutive & interleaved executions",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:28-35",
+      "input": "fixture run1 (fresh), run2 (immediate repeat), run3 (after interleaved calls)",
+      "expected": "run1 === run2 === run3 (identical outputs)",
+      "actual": "run1 == run2: true, run1 == run3: true",
+      "passed": true,
+      "details": {
+        "run1": ["Empty string", true, true, false, true],
+        "run2": ["Empty string", true, true, false, true],
+        "run3": ["Empty string", true, true, false, true]
+      }
+    },
+    {
+      "name": "Precondition enforcement: Non-string inputs return \"Not a string\" sentinel",
+      "precondition_source_line": "String/CheckRearrangePalindrome.js:19",
+      "input": "[0, 121, null, undefined, {}, []]",
+      "expected": "\"Not a string\" for all non-strings",
+      "actual": "Returned \"Not a string\" for all",
+      "passed": true,
+      "details": {}
+    }
+  ],
+  "all_passed": true
+}

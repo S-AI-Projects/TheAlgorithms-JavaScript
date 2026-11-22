@@ -1,10 +1,21 @@
 /**
  * What is a palindrome? https://en.wikipedia.org/wiki/Palindrome
- * Receives a string and returns whether it can be rearranged to become a palindrome or not
- * The string can only be a palindrome if the count of ALL characters is even or if the ONLY ONE character count is odd
- * Input is a string
+ * Receives a string and returns whether it can be rearranged to become a palindrome or not.
+ * The string can only be a palindrome if the count of ALL characters is even or if at most ONE character count is odd.
  *
- **/
+ * Determinism & Purity Contract:
+ * - Pure Function: `palindromeRearranging` has zero external dependencies (no time, randomness, network, or mutable globals).
+ * - Input Isolation & Repeatability: Repeated invocations with identical inputs yield identical outputs without side effects.
+ * - Normalization Policy: Character normalization (case-folding or whitespace trimming) is NOT performed by this function.
+ *   Characters are counted by exact Unicode character / case sensitivity (e.g. 'A' !== 'a').
+ *
+ * Preconditions:
+ * - Line 19: `if (typeof str !== 'string')` returns sentinel string `'Not a string'`.
+ * - Line 23: `if (!str)` returns sentinel string `'Empty string'`.
+ *
+ * @param {string} str - Input string to evaluate.
+ * @returns {boolean|string} True if characters can form a palindrome, false otherwise; or sentinel string on invalid/empty input.
+ */
 
 export const palindromeRearranging = (str) => {
   // check that input is a string
@@ -27,11 +38,3 @@ export const palindromeRearranging = (str) => {
     Object.values(charCounts).filter((count) => count % 2 !== 0).length <= 1
   )
 }
-
-// testing
-
-// > palindromeRearranging('aaeccrr')
-// true
-
-// > palindromeRearranging('leve')
-// false
