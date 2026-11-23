@@ -1,0 +1,48 @@
+{
+  "command": "node_modules/.bin/vitest run Bit-Manipulation/test/SetBit.test.js --reporter=json --outputFile=work/R50-T001/vitest-focused.raw.json",
+  "numTotalTests": 10,
+  "numPassedTests": 10,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " Set bit number 0 in 1:",
+      "status": "passed"
+    },
+    {
+      "name": " Set bit number 0 in 2:",
+      "status": "passed"
+    },
+    {
+      "name": " Set bit number 1 in 10:",
+      "status": "passed"
+    },
+    {
+      "name": " Set bit number 2 in 10:",
+      "status": "passed"
+    },
+    {
+      "name": " setBit contract smallest valid input: setBit(0, 0) sets bit 0 of zero",
+      "status": "passed"
+    },
+    {
+      "name": " setBit contract ordinary input: setBit(5, 1) turns 0b101 into 0b111",
+      "status": "passed"
+    },
+    {
+      "name": " setBit contract repeated value: setting a bit that is already set is a no-op",
+      "status": "passed"
+    },
+    {
+      "name": " setBit contract domain boundary: bit 30 is the highest positive bit",
+      "status": "passed"
+    },
+    {
+      "name": " setBit contract domain boundary: bit 31 is the 32-bit sign bit",
+      "status": "passed"
+    },
+    {
+      "name": " setBit contract returns a new value and leaves its arguments unchanged",
+      "status": "passed"
+    }
+  ]
+}

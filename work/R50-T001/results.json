@@ -1,0 +1,92 @@
+{
+  "task": "R50-T001",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Bit-Manipulation/test/SetBit.test.js --reporter=json --outputFile=work/R50-T001/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "smallest valid input",
+      "input": [0, 0],
+      "expected": 1,
+      "precondition": "SetBit.js:36 bitPosition is zero based (0 is smallest)",
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "ordinary input (0b101 -> 0b111)",
+      "input": [5, 1],
+      "expected": 7,
+      "precondition": "SetBit.js:36 bitPosition is zero based",
+      "actual": 7,
+      "pass": true
+    },
+    {
+      "name": "repeated value: bit already set",
+      "input": [7, 1],
+      "expected": 7,
+      "precondition": "SetBit.js:13 1 | 1 -> 1",
+      "actual": 7,
+      "pass": true
+    },
+    {
+      "name": "boundary: highest positive bit",
+      "input": [0, 30],
+      "expected": 1073741824,
+      "precondition": "SetBit.js:6-7 operands are 32-bit integers",
+      "actual": 1073741824,
+      "pass": true
+    },
+    {
+      "name": "boundary: sign bit",
+      "input": [0, 31],
+      "expected": -2147483648,
+      "precondition": "SetBit.js:6-7 operands are 32-bit integers",
+      "actual": -2147483648,
+      "pass": true
+    },
+    {
+      "name": "arguments unchanged after call",
+      "input": [5, 1],
+      "expected": [5, 1],
+      "actual": [5, 1],
+      "pass": true,
+      "precondition": "SetBit.js:42-44 returns a new value only"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "toggles instead of sets (| replaced by ^)",
+      "file": "Bit-Manipulation/SetBit.js",
+      "edit": {
+        "from": "  return number | (1 << bitPosition)\n",
+        "to": "  return number ^ (1 << bitPosition)\n"
+      },
+      "named_test": "repeated value: setting a bit that is already set is a no-op",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " Set bit number 0 in 1:",
+        " Set bit number 1 in 10:",
+        " setBit contract repeated value: setting a bit that is already set is a no-op"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T001/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11976,
+    "passed": 11976,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}
