@@ -21,9 +21,12 @@ const countLetters = (str) => {
     throw new TypeError('Input must not contain numbers')
   }
 
+  // Counting is case-insensitive: lower-case the input once, then tally it.
+  // The guards above only admit ASCII word characters, so `for...of` visits
+  // exactly the characters the previous index/charAt loop visited.
+  const lowerCaseStr = str.toLowerCase()
   const obj = {}
-  for (let i = 0; i < str.toLowerCase().length; i++) {
-    const char = str.toLowerCase().charAt(i)
+  for (const char of lowerCaseStr) {
     obj[char] = (obj[char] || 0) + 1
   }
 

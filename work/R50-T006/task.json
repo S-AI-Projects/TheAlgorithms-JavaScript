@@ -1,0 +1,14 @@
+{
+  "task": "R50-T006",
+  "focused_tests": ["String/test/CountLetters.test.js"],
+  "mutants": [
+    {
+      "name": "case folding dropped from the refactored tally",
+      "file": "String/CountLetters.js",
+      "find": "  const lowerCaseStr = str.toLowerCase()\n",
+      "replace": "  const lowerCaseStr = str\n",
+      "tests": ["String/test/CountLetters.test.js"],
+      "must_fail": "ordinary input: counts are case-insensitive"
+    }
+  ]
+}

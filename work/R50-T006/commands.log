@@ -1,0 +1,16 @@
+$ node --version
+  -> exit 0
+$ npm --version
+  -> exit 0
+$ npm ci --ignore-scripts --no-audit --no-fund
+  -> exit 0
+$ node_modules/.bin/vitest --version
+  -> exit 0
+$ node_modules/.bin/vitest run String/test/CountLetters.test.js --reporter=json --outputFile=work/R50-T006/vitest-focused.raw.json
+  -> exit 0
+$ node work/R50-T006/evidence.mjs
+  -> exit 0
+$ node_modules/.bin/vitest run String/test/CountLetters.test.js --root $TMPDIR/R50-T006-mutant-0x_89v8u --globals --reporter=json --outputFile=$TMPDIR/R50-T006-mutant-0x_89v8u/mutant-report.json
+  -> exit 1
+$ npm test -- --reporter=json --outputFile=work/R50-T006/vitest-full.raw.json
+  -> exit 0

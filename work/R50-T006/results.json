@@ -1,0 +1,150 @@
+{
+  "task": "R50-T006",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run String/test/CountLetters.test.js --reporter=json --outputFile=work/R50-T006/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 11,
+    "passed": 11,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "smallest valid input",
+      "input": "",
+      "expected": {
+        "result": {},
+        "keys": []
+      },
+      "actual": {
+        "result": {},
+        "keys": []
+      },
+      "pass": true,
+      "precondition": "CountLetters.js:12,16,20 '' passes all guards"
+    },
+    {
+      "name": "ordinary input",
+      "input": "Mississippi",
+      "expected": {
+        "result": {
+          "m": 1,
+          "i": 4,
+          "s": 4,
+          "p": 2
+        },
+        "keys": ["m", "i", "s", "p"]
+      },
+      "actual": {
+        "result": {
+          "m": 1,
+          "i": 4,
+          "s": 4,
+          "p": 2
+        },
+        "keys": ["m", "i", "s", "p"]
+      },
+      "pass": true,
+      "precondition": "CountLetters.js:16,20 letters only"
+    },
+    {
+      "name": "mixed case",
+      "input": "HelLo",
+      "expected": {
+        "result": {
+          "h": 1,
+          "e": 1,
+          "l": 2,
+          "o": 1
+        },
+        "keys": ["h", "e", "l", "o"]
+      },
+      "actual": {
+        "result": {
+          "h": 1,
+          "e": 1,
+          "l": 2,
+          "o": 1
+        },
+        "keys": ["h", "e", "l", "o"]
+      },
+      "pass": true,
+      "precondition": "CountLetters.js:27 counting is case-insensitive"
+    },
+    {
+      "name": "non-string",
+      "input": 0,
+      "expected": {
+        "error": "TypeError: Input should be a string"
+      },
+      "actual": {
+        "error": "TypeError: Input should be a string"
+      },
+      "pass": true,
+      "precondition": "CountLetters.js:12-13"
+    },
+    {
+      "name": "special character",
+      "input": "two words",
+      "expected": {
+        "error": "TypeError: Input must not contain special characters"
+      },
+      "actual": {
+        "error": "TypeError: Input must not contain special characters"
+      },
+      "pass": true,
+      "precondition": "CountLetters.js:16-17"
+    },
+    {
+      "name": "digit",
+      "input": "h3llo",
+      "expected": {
+        "error": "TypeError: Input must not contain numbers"
+      },
+      "actual": {
+        "error": "TypeError: Input must not contain numbers"
+      },
+      "pass": true,
+      "precondition": "CountLetters.js:20-21"
+    },
+    {
+      "name": "before/after agree (results, key order, errors)",
+      "input": "306 inputs (fixture + 300 generated)",
+      "expected": [],
+      "actual": [],
+      "pass": true,
+      "precondition": "CountLetters.js:9 public signature unchanged"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "case folding dropped from the refactored tally",
+      "file": "String/CountLetters.js",
+      "edit": {
+        "from": "  const lowerCaseStr = str.toLowerCase()\n",
+        "to": "  const lowerCaseStr = str\n"
+      },
+      "named_test": "ordinary input: counts are case-insensitive",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " CountLetters count the letters in a string. Allows upper case",
+        " CountLetters count the letters in a string. Allows upper and lower case",
+        " countLetters contract (locked before refactor) ordinary input: counts are case-insensitive, keys in first-seen order"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T006/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11975,
+    "passed": 11975,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}

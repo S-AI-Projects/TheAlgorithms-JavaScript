@@ -1,0 +1,2 @@
+ ✓ String/test/CountLetters.test.js  (11 tests) 1ms
+      Tests  11 passed (11)
