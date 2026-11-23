@@ -21,9 +21,22 @@
  */
 
 /**
+ * Returns `number` with the bit at `bitPosition` set to 1.
+ *
+ * Contract:
+ * - `number` is treated as a 32-bit integer (see the note above), so the
+ *   result is always a signed 32-bit integer.
+ * - `bitPosition` is zero based and supported in the range 0..31.
+ *   Position 31 is the sign bit, so `setBit(0, 31)` returns -2147483648.
+ * - Setting a bit that is already 1 returns the same value
+ *   (`setBit(7, 1) === 7`).
+ * - The function is pure: it mutates nothing and only returns a value.
+ *
  * @param {number} number
  * @param {number} bitPosition - zero based.
  * @return {number}
+ * @example setBit(0, 0) // 1
+ * @example setBit(5, 1) // 7 (0b101 -> 0b111)
  */
 
 export const setBit = (number, bitPosition) => {

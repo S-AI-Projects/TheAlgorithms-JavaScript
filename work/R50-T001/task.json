@@ -1,0 +1,14 @@
+{
+  "task": "R50-T001",
+  "focused_tests": ["Bit-Manipulation/test/SetBit.test.js"],
+  "mutants": [
+    {
+      "name": "toggles instead of sets (| replaced by ^)",
+      "file": "Bit-Manipulation/SetBit.js",
+      "find": "  return number | (1 << bitPosition)\n",
+      "replace": "  return number ^ (1 << bitPosition)\n",
+      "tests": ["Bit-Manipulation/test/SetBit.test.js"],
+      "must_fail": "repeated value: setting a bit that is already set is a no-op"
+    }
+  ]
+}
