@@ -1,0 +1,182 @@
+{
+  "task": "R50-T004",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Sorts/test/OddEvenSort.test.js --reporter=json --outputFile=work/R50-T004/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 17,
+    "passed": 17,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "oddEvenSort([3,1,2])",
+      "input": [3, 1, 2],
+      "expected": {
+        "result": [1, 2, 3],
+        "returnsSameArray": true
+      },
+      "actual": {
+        "result": [1, 2, 3],
+        "returnsSameArray": true
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:41 ascending, in place, returns arr (line 58)"
+    },
+    {
+      "name": "oddEvenSort([2,2,1])",
+      "input": [2, 2, 1],
+      "expected": {
+        "result": [1, 2, 2],
+        "returnsSameArray": true
+      },
+      "actual": {
+        "result": [1, 2, 2],
+        "returnsSameArray": true
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:41 ascending, in place, returns arr (line 58)"
+    },
+    {
+      "name": "oddEvenSort([1,2,3])",
+      "input": [1, 2, 3],
+      "expected": {
+        "result": [1, 2, 3],
+        "returnsSameArray": true
+      },
+      "actual": {
+        "result": [1, 2, 3],
+        "returnsSameArray": true
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:41 ascending, in place, returns arr (line 58)"
+    },
+    {
+      "name": "oddEvenSort([3,2,1])",
+      "input": [3, 2, 1],
+      "expected": {
+        "result": [1, 2, 3],
+        "returnsSameArray": true
+      },
+      "actual": {
+        "result": [1, 2, 3],
+        "returnsSameArray": true
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:41 ascending, in place, returns arr (line 58)"
+    },
+    {
+      "name": "oddEvenSort([])",
+      "input": [],
+      "expected": {
+        "result": [],
+        "returnsSameArray": true
+      },
+      "actual": {
+        "result": [],
+        "returnsSameArray": true
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:41 ascending, in place, returns arr (line 58)"
+    },
+    {
+      "name": "oddEvenSort([7])",
+      "input": [7],
+      "expected": {
+        "result": [7],
+        "returnsSameArray": true
+      },
+      "actual": {
+        "result": [7],
+        "returnsSameArray": true
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:41 ascending, in place, returns arr (line 58)"
+    },
+    {
+      "name": "swap([3, 1, 2], 0, 1)",
+      "input": [[3, 1, 2], 0, 1],
+      "expected": {
+        "arr": [1, 3, 2],
+        "returned": "undefined"
+      },
+      "actual": {
+        "arr": [1, 3, 2],
+        "returned": "undefined"
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:22-26 swap mutates arr, returns nothing"
+    },
+    {
+      "name": "property run: 100 cases, seed 20261123, length 0..12, values -5..5",
+      "input": {
+        "seed": 20261123,
+        "cases": 100
+      },
+      "expected": {
+        "ordered": 100,
+        "multiplicitiesPreserved": 100
+      },
+      "actual": {
+        "ordered": 100,
+        "multiplicitiesPreserved": 100
+      },
+      "pass": true,
+      "precondition": "OddEvenSort.js:46,52 numbers compared with >"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "swap loses a value (arr[j] = arr[i])",
+      "file": "Sorts/OddEvenSort.js",
+      "edit": {
+        "from": "  arr[j] = tmp\n",
+        "to": "  arr[j] = arr[i]\n"
+      },
+      "named_test": "output preserves input multiplicities",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " The OddEvenSort of the array [5, 4, 3, 2, 1] is [1, 2, 3, 4, 5]",
+        " The OddEvenSort of the array [10, 14, 12, 20] is [10, 12, 14, 20]",
+        " The OddEvenSort of the array [166, 169, 144] is [144, 166, 169]",
+        " swap invariant swap exchanges two positions in place and returns undefined",
+        " swap invariant swap preserves multiplicities",
+        " oddEvenSort fixture (ascending, in place) oddEvenSort([3,1,2]) is [1,2,3] and returns the same array",
+        " oddEvenSort fixture (ascending, in place) oddEvenSort([2,2,1]) is [1,2,2] and returns the same array",
+        " oddEvenSort fixture (ascending, in place) oddEvenSort([3,2,1]) is [1,2,3] and returns the same array",
+        " oddEvenSort properties over 100 seeded cases readable small generated cases sort as expected",
+        " oddEvenSort properties over 100 seeded cases output preserves input multiplicities"
+      ]
+    },
+    {
+      "name": "even pass no longer clears the sorted flag",
+      "file": "Sorts/OddEvenSort.js",
+      "edit": {
+        "from": "    for (let i = 0; i < arr.length - 1; i += 2) {\n      if (arr[i] > arr[i + 1]) {\n        swap(arr, i, i + 1)\n        sorted = false\n",
+        "to": "    for (let i = 0; i < arr.length - 1; i += 2) {\n      if (arr[i] > arr[i + 1]) {\n        swap(arr, i, i + 1)\n"
+      },
+      "named_test": "output is ordered",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " oddEvenSort fixture (ascending, in place) oddEvenSort([3,1,2]) is [1,2,3] and returns the same array",
+        " oddEvenSort properties over 100 seeded cases output is ordered"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T004/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11983,
+    "passed": 11983,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}

@@ -1,0 +1,76 @@
+{
+  "command": "node_modules/.bin/vitest run Sorts/test/OddEvenSort.test.js --reporter=json --outputFile=work/R50-T004/vitest-focused.raw.json",
+  "numTotalTests": 17,
+  "numPassedTests": 17,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " The OddEvenSort of the array [5, 4, 3, 2, 1] is [1, 2, 3, 4, 5]",
+      "status": "passed"
+    },
+    {
+      "name": " The OddEvenSort of the array [] is []",
+      "status": "passed"
+    },
+    {
+      "name": " The OddEvenSort of the array [10, 14, 12, 20] is [10, 12, 14, 20]",
+      "status": "passed"
+    },
+    {
+      "name": " The OddEvenSort of the array [166, 169, 144] is [144, 166, 169]",
+      "status": "passed"
+    },
+    {
+      "name": " swap invariant swap exchanges two positions in place and returns undefined",
+      "status": "passed"
+    },
+    {
+      "name": " swap invariant swap preserves multiplicities",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort fixture (ascending, in place) oddEvenSort([3,1,2]) is [1,2,3] and returns the same array",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort fixture (ascending, in place) oddEvenSort([2,2,1]) is [1,2,2] and returns the same array",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort fixture (ascending, in place) oddEvenSort([1,2,3]) is [1,2,3] and returns the same array",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort fixture (ascending, in place) oddEvenSort([3,2,1]) is [1,2,3] and returns the same array",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort fixture (ascending, in place) oddEvenSort([]) is [] and returns the same array",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort fixture (ascending, in place) oddEvenSort([7]) is [7] and returns the same array",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort properties over 100 seeded cases the generator is deterministic for a fixed seed",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort properties over 100 seeded cases readable small generated cases sort as expected",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort properties over 100 seeded cases output is ordered",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort properties over 100 seeded cases output preserves input multiplicities",
+      "status": "passed"
+    },
+    {
+      "name": " oddEvenSort properties over 100 seeded cases output is the input array, mutated in place",
+      "status": "passed"
+    }
+  ]
+}

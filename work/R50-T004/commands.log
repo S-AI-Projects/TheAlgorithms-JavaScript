@@ -1,0 +1,18 @@
+$ node --version
+  -> exit 0
+$ npm --version
+  -> exit 0
+$ npm ci --ignore-scripts --no-audit --no-fund
+  -> exit 0
+$ node_modules/.bin/vitest --version
+  -> exit 0
+$ node_modules/.bin/vitest run Sorts/test/OddEvenSort.test.js --reporter=json --outputFile=work/R50-T004/vitest-focused.raw.json
+  -> exit 0
+$ node work/R50-T004/evidence.mjs
+  -> exit 0
+$ node_modules/.bin/vitest run Sorts/test/OddEvenSort.test.js --root $TMPDIR/R50-T004-mutant-9udzchl_ --globals --reporter=json --outputFile=$TMPDIR/R50-T004-mutant-9udzchl_/mutant-report.json
+  -> exit 1
+$ node_modules/.bin/vitest run Sorts/test/OddEvenSort.test.js --root $TMPDIR/R50-T004-mutant-8tpryuo6 --globals --reporter=json --outputFile=$TMPDIR/R50-T004-mutant-8tpryuo6/mutant-report.json
+  -> exit 1
+$ npm test -- --reporter=json --outputFile=work/R50-T004/vitest-full.raw.json
+  -> exit 0
