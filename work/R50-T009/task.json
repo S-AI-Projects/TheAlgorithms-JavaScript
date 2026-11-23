@@ -1,0 +1,14 @@
+{
+  "task": "R50-T009",
+  "focused_tests": ["Recursive/test/FibonacciNumberRecursive.test.js"],
+  "mutants": [
+    {
+      "name": "base case widened (n < 2 becomes n <= 2)",
+      "file": "Recursive/FibonacciNumberRecursive.js",
+      "find": "  if (n < 2) {\n",
+      "replace": "  if (n <= 2) {\n",
+      "tests": ["Recursive/test/FibonacciNumberRecursive.test.js"],
+      "must_fail": "fibonacci(2) is 1"
+    }
+  ]
+}

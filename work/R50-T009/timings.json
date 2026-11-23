@@ -1,0 +1,45 @@
+{
+  "note": "Observations only; no threshold is applied to timings.",
+  "phiToThe4th": 6.854,
+  "repetitions": 5,
+  "experiment": [
+    {
+      "n": 20,
+      "calls": 21891,
+      "predictedCalls": 21891,
+      "medianMs": 0.042,
+      "rangeMs": [0.042, 0.096],
+      "allResultsCorrect": true
+    },
+    {
+      "n": 24,
+      "calls": 150049,
+      "predictedCalls": 150049,
+      "medianMs": 0.253,
+      "rangeMs": [0.248, 0.255],
+      "allResultsCorrect": true
+    },
+    {
+      "n": 28,
+      "calls": 1028457,
+      "predictedCalls": 1028457,
+      "medianMs": 1.734,
+      "rangeMs": [1.73, 1.739],
+      "allResultsCorrect": true
+    }
+  ],
+  "ratios": [
+    {
+      "from": 20,
+      "to": 24,
+      "callRatio": 6.854,
+      "medianTimeRatio": 6.02
+    },
+    {
+      "from": 24,
+      "to": 28,
+      "callRatio": 6.854,
+      "medianTimeRatio": 6.85
+    }
+  ]
+}
