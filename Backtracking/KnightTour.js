@@ -50,7 +50,11 @@ class OpenKnightTour {
       if (this.board[y][x] === 0) {
         this.board[y][x] = curr + 1
         if (this.solveHelper([y, x], curr + 1)) return true
-        // Backtracking: If the solution is not found, reset the cell to 0
+        // Backtracking: If the solution is not found, reset the cell to 0.
+        // Protected condition (see tests/KnightTour.test.js): every number
+        // written during a failed branch is undone, so a failed solve()
+        // leaves an all-zero board and a successful one uses each of
+        // 1..size*size exactly once.
         this.board[y][x] = 0
       }
     }

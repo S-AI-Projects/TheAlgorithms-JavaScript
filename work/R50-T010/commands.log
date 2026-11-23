@@ -1,0 +1,18 @@
+$ node --version
+  -> exit 0
+$ npm --version
+  -> exit 0
+$ npm ci --ignore-scripts --no-audit --no-fund
+  -> exit 0
+$ node_modules/.bin/vitest --version
+  -> exit 0
+$ node_modules/.bin/vitest run Backtracking/tests/KnightTour.test.js --reporter=json --outputFile=work/R50-T010/vitest-focused.raw.json
+  -> exit 0
+$ node work/R50-T010/evidence.mjs
+  -> exit 0
+$ node_modules/.bin/vitest run Backtracking/tests/KnightTour.test.js --root $TMPDIR/R50-T010-mutant-uiksrn7f --globals --reporter=json --outputFile=$TMPDIR/R50-T010-mutant-uiksrn7f/mutant-report.json
+  -> exit 1
+$ node_modules/.bin/vitest run Backtracking/tests/KnightTour.test.js --root $TMPDIR/R50-T010-mutant-yl6skk01 --globals --reporter=json --outputFile=$TMPDIR/R50-T010-mutant-yl6skk01/mutant-report.json
+  -> exit 1
+$ npm test -- --reporter=json --outputFile=work/R50-T010/vitest-full.raw.json
+  -> exit 0

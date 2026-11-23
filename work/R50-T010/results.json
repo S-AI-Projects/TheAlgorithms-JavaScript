@@ -1,0 +1,172 @@
+{
+  "task": "R50-T010",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Backtracking/tests/KnightTour.test.js --reporter=json --outputFile=work/R50-T010/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "original: smallest board n = 1",
+      "input": 1,
+      "expected": {
+        "solved": false,
+        "board": [[0]],
+        "tourProblems": null
+      },
+      "actual": {
+        "solved": false,
+        "board": [[0]],
+        "tourProblems": null
+      },
+      "pass": true,
+      "precondition": "KnightTour.js:38 start square is not numbered (curr = 0)"
+    },
+    {
+      "name": "original: n = 3 failed search leaves zeros",
+      "input": 3,
+      "expected": {
+        "solved": false,
+        "board": [
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0]
+        ],
+        "tourProblems": null
+      },
+      "actual": {
+        "solved": false,
+        "board": [
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0]
+        ],
+        "tourProblems": null
+      },
+      "pass": true,
+      "precondition": "KnightTour.js:58 backtracking reset"
+    },
+    {
+      "name": "original: n = 5 is a valid tour",
+      "input": 5,
+      "expected": {
+        "solved": true,
+        "tourProblems": 0
+      },
+      "actual": {
+        "solved": true,
+        "tourProblems": 0
+      },
+      "pass": true,
+      "precondition": "KnightTour.js:24-26 in-bounds moves only; :58 reset"
+    },
+    {
+      "name": "original: getMoves([1, 2]) on 3x3",
+      "input": [3, [1, 2]],
+      "expected": [
+        [2, 0],
+        [0, 0]
+      ],
+      "actual": [
+        [2, 0],
+        [0, 0]
+      ],
+      "pass": true,
+      "precondition": "KnightTour.js:25 y >= 0 keeps row 0"
+    },
+    {
+      "name": "mutant (no reset): n = 3 board",
+      "input": 3,
+      "expected": {
+        "differsFrom": [
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0]
+        ]
+      },
+      "actual": [
+        [2, 5, 8],
+        [7, 0, 3],
+        [4, 1, 6]
+      ],
+      "pass": true,
+      "precondition": "KnightTour.js:58 removed"
+    },
+    {
+      "name": "mutant (no reset): n = 5 tour problems",
+      "input": 5,
+      "expected": {
+        "differsFrom": 0
+      },
+      "actual": 11,
+      "pass": true,
+      "precondition": "KnightTour.js:58 removed"
+    },
+    {
+      "name": "mutant (y > 0): getMoves([1, 2]) on 3x3",
+      "input": [3, [1, 2]],
+      "expected": {
+        "differsFrom": [
+          [2, 0],
+          [0, 0]
+        ]
+      },
+      "actual": [[2, 0]],
+      "pass": true,
+      "precondition": "KnightTour.js:25 changed"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "backtracking reset removed",
+      "file": "Backtracking/KnightTour.js",
+      "edit": {
+        "from": "        this.board[y][x] = 0\n",
+        "to": ""
+      },
+      "named_test": "failed search on 3x3 leaves the board all zeros",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " OpenKnightTour OpenKnightTour(5)",
+        " OpenKnightTour invariants failed search on 3x3 leaves the board all zeros",
+        " OpenKnightTour invariants 5x5 solution is a valid open tour using 1..25 once each",
+        " OpenKnightTour invariants fresh equivalent instances give identical results"
+      ]
+    },
+    {
+      "name": "lower row bound off by one (y > 0)",
+      "file": "Backtracking/KnightTour.js",
+      "edit": {
+        "from": "([y, x]) => y >= 0 && y < this.size",
+        "to": "([y, x]) => y > 0 && y < this.size"
+      },
+      "named_test": "getMoves keeps moves onto row 0 and column 0",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " OpenKnightTour OpenKnightTour(5)",
+        " OpenKnightTour invariants 5x5 solution is a valid open tour using 1..25 once each",
+        " OpenKnightTour invariants getMoves keeps moves onto row 0 and column 0",
+        " OpenKnightTour invariants fresh equivalent instances give identical results"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T010/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11975,
+    "passed": 11975,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}
