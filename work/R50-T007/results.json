@@ -1,0 +1,163 @@
+{
+  "task": "R50-T007",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Graphs/test/KruskalMST.test.js --reporter=json --outputFile=work/R50-T007/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "smallest valid input: new node",
+      "input": "new DisjointSetTreeNode('a')",
+      "expected": {
+        "key": "a",
+        "parentIsSelf": true,
+        "rank": 0
+      },
+      "actual": {
+        "key": "a",
+        "parentIsSelf": true,
+        "rank": 0
+      },
+      "pass": true,
+      "precondition": "KruskalMST.js:38-39 parent = this, rank = 0"
+    },
+    {
+      "name": "after makeSet a, b, c",
+      "input": "makeSet x3",
+      "expected": {
+        "parents": ["a", "b", "c"],
+        "ranks": [0, 0, 0]
+      },
+      "actual": {
+        "parents": ["a", "b", "c"],
+        "ranks": [0, 0, 0]
+      },
+      "pass": true,
+      "precondition": "KruskalMST.js:50-53 makeSet creates a root node"
+    },
+    {
+      "name": "after union('a', 'b') \u2014 equal ranks (decisive transition)",
+      "input": "union('a', 'b')",
+      "expected": {
+        "parents": ["b", "b", "c"],
+        "ranks": [0, 1, 0]
+      },
+      "actual": {
+        "parents": ["b", "b", "c"],
+        "ranks": [0, 1, 0]
+      },
+      "pass": true,
+      "precondition": "KruskalMST.js:73-75 x.parent = y; equal ranks -> y.rank += 1"
+    },
+    {
+      "name": "after union('c', 'a') \u2014 ranks 0 vs 1",
+      "input": "union('c', 'a')",
+      "expected": {
+        "parents": ["b", "b", "b"],
+        "ranks": [0, 1, 0]
+      },
+      "actual": {
+        "parents": ["b", "b", "b"],
+        "ranks": [0, 1, 0]
+      },
+      "pass": true,
+      "precondition": "KruskalMST.js:68-78 lower rank goes below, no rank change"
+    },
+    {
+      "name": "KruskalMST on the example at the bottom of the file",
+      "input": "1-2:1, 2-3:2, 3-4:1, 3-5:100, 4-5:5",
+      "expected": {
+        "1": {
+          "2": 1
+        },
+        "2": {
+          "1": 1,
+          "3": 2
+        },
+        "3": {
+          "2": 2,
+          "4": 1
+        },
+        "4": {
+          "3": 1,
+          "5": 5
+        },
+        "5": {
+          "4": 5
+        }
+      },
+      "actual": {
+        "1": {
+          "2": 1
+        },
+        "2": {
+          "1": 1,
+          "3": 2
+        },
+        "3": {
+          "2": 2,
+          "4": 1
+        },
+        "4": {
+          "3": 1,
+          "5": 5
+        },
+        "5": {
+          "4": 5
+        }
+      },
+      "pass": true,
+      "precondition": "KruskalMST.js: KruskalMST uses DisjointSetTree to skip 3-5"
+    },
+    {
+      "name": "JSDoc @example run verbatim with node (stdout vs documented comments)",
+      "input": "14 example lines",
+      "expected": ["a true 0", "b 1", "b 1", "0 0"],
+      "actual": ["a true 0", "b 1", "b 1", "0 0"],
+      "pass": true,
+      "precondition": "KruskalMST.js:17-33 @example block"
+    },
+    {
+      "name": "documented comments match the pinned output",
+      "input": "comments after each console.log",
+      "expected": ["a true 0", "b 1", "b 1", "0 0"],
+      "actual": ["a true 0", "b 1", "b 1", "0 0"],
+      "pass": true,
+      "precondition": "KruskalMST.js:21,29,32,33"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "rank grows by 2 on equal-rank link",
+      "file": "Graphs/KruskalMST.js",
+      "edit": {
+        "from": "        y.rank += 1\n",
+        "to": "        y.rank += 2\n"
+      },
+      "named_test": "prints exactly what the comments next to each console.log say",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " DisjointSetTreeNode documentation example prints exactly what the comments next to each console.log say",
+        " DisjointSetTreeNode states (calculated by hand) ordinary input: union of equal ranks, then unequal ranks"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T007/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11975,
+    "passed": 11975,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}

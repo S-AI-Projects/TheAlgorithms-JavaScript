@@ -1,0 +1,28 @@
+{
+  "command": "node_modules/.bin/vitest run Graphs/test/KruskalMST.test.js --reporter=json --outputFile=work/R50-T007/vitest-focused.raw.json",
+  "numTotalTests": 5,
+  "numPassedTests": 5,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " DisjointSetTreeNode documentation example imports real public names from this file",
+      "status": "passed"
+    },
+    {
+      "name": " DisjointSetTreeNode documentation example prints exactly what the comments next to each console.log say",
+      "status": "passed"
+    },
+    {
+      "name": " DisjointSetTreeNode states (calculated by hand) smallest valid input: a new node is the root of its own set",
+      "status": "passed"
+    },
+    {
+      "name": " DisjointSetTreeNode states (calculated by hand) ordinary input: union of equal ranks, then unequal ranks",
+      "status": "passed"
+    },
+    {
+      "name": " KruskalMST example from the bottom of KruskalMST.js keeps the 4 cheapest edges that do not form a cycle",
+      "status": "passed"
+    }
+  ]
+}

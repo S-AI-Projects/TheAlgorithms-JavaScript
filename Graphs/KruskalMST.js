@@ -1,5 +1,38 @@
+/**
+ * Disjoint Set Node to store the parent and rank.
+ *
+ * A new node is the root of its own one-element set: its `parent` is itself
+ * and its `rank` (an upper bound on the height of its tree) is 0.
+ *
+ * The decisive state transition happens in `DisjointSetTree.link`: when two
+ * roots of equal rank are joined, the first root's `parent` is set to the
+ * second root and the second root's `rank` goes up by 1. When the ranks
+ * differ, the lower-rank root is attached below the higher one and no rank
+ * changes. `findSet` then answers "which set?" by following `parent` links
+ * up to the root.
+ *
+ * The example below is executed by Graphs/test/KruskalMST.test.js, which
+ * checks each printed value against the comment on the same line.
+ *
+ * @example
+ * import { DisjointSetTreeNode, DisjointSetTree } from './KruskalMST.js'
+ *
+ * const node = new DisjointSetTreeNode('a')
+ * console.log(node.key, node.parent === node, node.rank) // a true 0
+ *
+ * const sets = new DisjointSetTree()
+ * sets.makeSet('a')
+ * sets.makeSet('b')
+ * sets.makeSet('c')
+ * // equal ranks (0, 0): a.parent = b and b.rank becomes 1
+ * sets.union('a', 'b')
+ * console.log(sets.findSet('a').key, sets.map.b.rank) // b 1
+ * // ranks differ (c: 0, root b: 1): c goes below b, b.rank stays 1
+ * sets.union('c', 'a')
+ * console.log(sets.findSet('c').key, sets.map.b.rank) // b 1
+ * console.log(sets.map.a.rank, sets.map.c.rank) // 0 0
+ */
 class DisjointSetTreeNode {
-  // Disjoint Set Node to store the parent and rank
   constructor(key) {
     this.key = key
     this.parent = this
@@ -105,7 +138,11 @@ class GraphWeightedUndirectedAdjacencyList {
   }
 }
 
-export { GraphWeightedUndirectedAdjacencyList }
+export {
+  GraphWeightedUndirectedAdjacencyList,
+  DisjointSetTreeNode,
+  DisjointSetTree
+}
 
 // const graph = new GraphWeightedUndirectedAdjacencyList()
 // graph.addEdge(1, 2, 1)

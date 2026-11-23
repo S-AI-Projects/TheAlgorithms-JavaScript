@@ -1,0 +1,14 @@
+{
+  "task": "R50-T007",
+  "focused_tests": ["Graphs/test/KruskalMST.test.js"],
+  "mutants": [
+    {
+      "name": "rank grows by 2 on equal-rank link",
+      "file": "Graphs/KruskalMST.js",
+      "find": "        y.rank += 1\n",
+      "replace": "        y.rank += 2\n",
+      "tests": ["Graphs/test/KruskalMST.test.js"],
+      "must_fail": "prints exactly what the comments next to each console.log say"
+    }
+  ]
+}
