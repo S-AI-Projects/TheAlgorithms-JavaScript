@@ -1,0 +1,194 @@
+{
+  "task": "R50-T008",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Data-Structures/Tree/test/Trie.test.js --reporter=json --outputFile=work/R50-T008/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "TrieNode without parent",
+      "input": "new TrieNode('c')",
+      "expected": {
+        "parent": null,
+        "count": 0
+      },
+      "actual": {
+        "parent": null,
+        "count": 0
+      },
+      "pass": true,
+      "precondition": "Trie.js:21-22 undefined parent -> null"
+    },
+    {
+      "name": "findPrefix('cab') hits the no-such-prefix branch",
+      "input": "cab",
+      "expected": null,
+      "actual": null,
+      "pass": true,
+      "precondition": "Trie.js:76 return null // No such prefix exists"
+    },
+    {
+      "name": "contains / findOccurrences / findAllWords for 'cab'",
+      "input": "cab",
+      "expected": {
+        "contains": false,
+        "occurrences": 0,
+        "words": []
+      },
+      "actual": {
+        "contains": false,
+        "occurrences": 0,
+        "words": []
+      },
+      "pass": true,
+      "precondition": "Trie.js:126,135,142 null node -> empty result"
+    },
+    {
+      "name": "prefix 'ca' vs complete word 'car'",
+      "input": ["ca", "car"],
+      "expected": {
+        "ca": [false, 0],
+        "car": [true, 1]
+      },
+      "actual": {
+        "ca": [false, 0],
+        "car": [true, 1]
+      },
+      "pass": true,
+      "precondition": "Trie.js:135 node.count !== 0"
+    },
+    {
+      "name": "trie unchanged after failed lookups",
+      "input": "findAllWords(\"\") after the failed lookups",
+      "expected": [
+        {
+          "word": "car",
+          "count": 1
+        },
+        {
+          "word": "cat",
+          "count": 1
+        },
+        {
+          "word": "dog",
+          "count": 1
+        }
+      ],
+      "actual": [
+        {
+          "word": "car",
+          "count": 1
+        },
+        {
+          "word": "cat",
+          "count": 1
+        },
+        {
+          "word": "dog",
+          "count": 1
+        }
+      ],
+      "pass": true,
+      "precondition": "Trie.js:69-80 findPrefix only reads children"
+    },
+    {
+      "name": "successful call after the failure: insert('cab')",
+      "input": "cab",
+      "expected": {
+        "contains": true,
+        "occurrences": 1
+      },
+      "actual": {
+        "contains": true,
+        "occurrences": 1
+      },
+      "pass": true,
+      "precondition": "Trie.js:51-66 insert creates missing nodes"
+    },
+    {
+      "name": "repeated insertion of 'car'",
+      "input": ["car", "car"],
+      "expected": 2,
+      "actual": 2,
+      "pass": true,
+      "precondition": "Trie.js:66 node.count += 1"
+    },
+    {
+      "name": "branch reach (instrumented copy): which return null fired",
+      "input": ["findPrefix('ca')", "contains('cab')", "findPrefix(5)"],
+      "expected": [
+        {
+          "line": 76,
+          "word": "cab",
+          "i": 2
+        },
+        {
+          "line": 70,
+          "word": 5
+        }
+      ],
+      "actual": [
+        {
+          "line": 76,
+          "word": "cab",
+          "i": 2
+        },
+        {
+          "line": 70,
+          "word": 5
+        }
+      ],
+      "pass": true,
+      "precondition": "Trie.js:76 missing child at index 2 ('b'); Trie.js:70 non-string guard"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "prefix-only node counted as a word (drop count check)",
+      "file": "Data-Structures/Tree/Trie.js",
+      "edit": {
+        "from": "    return node !== null && node.count !== 0\n",
+        "to": "    return node !== null\n"
+      },
+      "named_test": "prefix 'ca' is not a complete word, but 'car' is",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " Trie absent-result paths (no exceptions are thrown) prefix 'ca' is not a complete word, but 'car' is"
+      ]
+    },
+    {
+      "name": "missing-child branch returns the partial prefix instead of null",
+      "file": "Data-Structures/Tree/Trie.js",
+      "edit": {
+        "from": "=== undefined) return null // No such prefix exists\n",
+        "to": "=== undefined) return node // No such prefix exists\n"
+      },
+      "named_test": "missing word 'cab' reaches the null branch of findPrefix",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " Trie absent-result paths (no exceptions are thrown) missing word 'cab' reaches the null branch of findPrefix",
+        " Trie absent-result paths (no exceptions are thrown) failed lookups leave the trie unchanged and later calls succeed"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T008/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11977,
+    "passed": 11977,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}

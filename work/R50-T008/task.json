@@ -1,0 +1,22 @@
+{
+  "task": "R50-T008",
+  "focused_tests": ["Data-Structures/Tree/test/Trie.test.js"],
+  "mutants": [
+    {
+      "name": "prefix-only node counted as a word (drop count check)",
+      "file": "Data-Structures/Tree/Trie.js",
+      "find": "    return node !== null && node.count !== 0\n",
+      "replace": "    return node !== null\n",
+      "tests": ["Data-Structures/Tree/test/Trie.test.js"],
+      "must_fail": "prefix 'ca' is not a complete word, but 'car' is"
+    },
+    {
+      "name": "missing-child branch returns the partial prefix instead of null",
+      "file": "Data-Structures/Tree/Trie.js",
+      "find": "=== undefined) return null // No such prefix exists\n",
+      "replace": "=== undefined) return node // No such prefix exists\n",
+      "tests": ["Data-Structures/Tree/test/Trie.test.js"],
+      "must_fail": "missing word 'cab' reaches the null branch of findPrefix"
+    }
+  ]
+}
