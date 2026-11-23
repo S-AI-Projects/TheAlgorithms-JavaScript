@@ -1,0 +1,14 @@
+{
+  "task": "R50-T003",
+  "focused_tests": ["Data-Structures/Heap/test/KeyPriorityQueue.test.js"],
+  "mutants": [
+    {
+      "name": "parent formula off by one (floor(p / 2))",
+      "file": "Data-Structures/Heap/KeyPriorityQueue.js",
+      "find": "const getParentPosition = (position) => Math.floor((position - 1) / 2)",
+      "replace": "const getParentPosition = (position) => Math.floor(position / 2)",
+      "tests": ["Data-Structures/Heap/test/KeyPriorityQueue.test.js"],
+      "must_fail": "explicit table: parent of position 0 is -1"
+    }
+  ]
+}

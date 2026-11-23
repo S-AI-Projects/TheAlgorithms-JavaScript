@@ -1,0 +1,444 @@
+{
+  "task": "R50-T003",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Data-Structures/Heap/test/KeyPriorityQueue.test.js --reporter=json --outputFile=work/R50-T003/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 38,
+    "passed": 38,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "getParentPosition(0) vs explicit table",
+      "input": 0,
+      "expected": -1,
+      "actual": -1,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(1) vs explicit table",
+      "input": 1,
+      "expected": 0,
+      "actual": 0,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(2) vs explicit table",
+      "input": 2,
+      "expected": 0,
+      "actual": 0,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(3) vs explicit table",
+      "input": 3,
+      "expected": 1,
+      "actual": 1,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(4) vs explicit table",
+      "input": 4,
+      "expected": 1,
+      "actual": 1,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(5) vs explicit table",
+      "input": 5,
+      "expected": 2,
+      "actual": 2,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(6) vs explicit table",
+      "input": 6,
+      "expected": 2,
+      "actual": 2,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(7) vs explicit table",
+      "input": 7,
+      "expected": 3,
+      "actual": 3,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(8) vs explicit table",
+      "input": 8,
+      "expected": 3,
+      "actual": 3,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(9) vs explicit table",
+      "input": 9,
+      "expected": 4,
+      "actual": 4,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(10) vs explicit table",
+      "input": 10,
+      "expected": 4,
+      "actual": 4,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(11) vs explicit table",
+      "input": 11,
+      "expected": 5,
+      "actual": 5,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(12) vs explicit table",
+      "input": 12,
+      "expected": 5,
+      "actual": 5,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(13) vs explicit table",
+      "input": 13,
+      "expected": 6,
+      "actual": 6,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(14) vs explicit table",
+      "input": 14,
+      "expected": 6,
+      "actual": 6,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(15) vs explicit table",
+      "input": 15,
+      "expected": 7,
+      "actual": 7,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(16) vs explicit table",
+      "input": 16,
+      "expected": 7,
+      "actual": 7,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(17) vs explicit table",
+      "input": 17,
+      "expected": 8,
+      "actual": 8,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(18) vs explicit table",
+      "input": 18,
+      "expected": 8,
+      "actual": 8,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(19) vs explicit table",
+      "input": 19,
+      "expected": 9,
+      "actual": 9,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(20) vs explicit table",
+      "input": 20,
+      "expected": 9,
+      "actual": 9,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(21) vs explicit table",
+      "input": 21,
+      "expected": 10,
+      "actual": 10,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(22) vs explicit table",
+      "input": 22,
+      "expected": 10,
+      "actual": 10,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(23) vs explicit table",
+      "input": 23,
+      "expected": 11,
+      "actual": 11,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(24) vs explicit table",
+      "input": 24,
+      "expected": 11,
+      "actual": 11,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:15-16 children 2p+1, 2p+2; parent floor((p-1)/2)"
+    },
+    {
+      "name": "getParentPosition(0..63) vs bit-shift oracle",
+      "input": "0..63",
+      "expected": [
+        -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
+        11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19,
+        20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28,
+        29, 29, 30, 30, 31
+      ],
+      "actual": [
+        -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
+        11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19,
+        20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28,
+        29, 29, 30, 30, 31
+      ],
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:36 getParentPosition"
+    },
+    {
+      "name": "fixture step 1: push A(1)",
+      "input": ["push", "A", 1],
+      "expected": {
+        "removed": null,
+        "size": 1,
+        "referenceRemoved": null,
+        "referenceSize": 1
+      },
+      "actual": {
+        "removed": null,
+        "size": 1,
+        "referenceRemoved": null,
+        "referenceSize": 1
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:59-63 push adds and shifts up"
+    },
+    {
+      "name": "fixture step 2: push B(2)",
+      "input": ["push", "B", 2],
+      "expected": {
+        "removed": null,
+        "size": 2,
+        "referenceRemoved": null,
+        "referenceSize": 2
+      },
+      "actual": {
+        "removed": null,
+        "size": 2,
+        "referenceRemoved": null,
+        "referenceSize": 2
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:59-63 push adds and shifts up"
+    },
+    {
+      "name": "fixture step 3: push C(3)",
+      "input": ["push", "C", 3],
+      "expected": {
+        "removed": null,
+        "size": 3,
+        "referenceRemoved": null,
+        "referenceSize": 3
+      },
+      "actual": {
+        "removed": null,
+        "size": 3,
+        "referenceRemoved": null,
+        "referenceSize": 3
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:59-63 push adds and shifts up"
+    },
+    {
+      "name": "fixture step 4: pop",
+      "input": ["pop"],
+      "expected": {
+        "removed": "A",
+        "size": 2,
+        "referenceRemoved": "A",
+        "referenceSize": 2
+      },
+      "actual": {
+        "removed": "A",
+        "size": 2,
+        "referenceRemoved": "A",
+        "referenceSize": 2
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:69-75 pop removes the least priority"
+    },
+    {
+      "name": "fixture step 5: pop",
+      "input": ["pop"],
+      "expected": {
+        "removed": "B",
+        "size": 1,
+        "referenceRemoved": "B",
+        "referenceSize": 1
+      },
+      "actual": {
+        "removed": "B",
+        "size": 1,
+        "referenceRemoved": "B",
+        "referenceSize": 1
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:69-75 pop removes the least priority"
+    },
+    {
+      "name": "fixture step 6: push D(4)",
+      "input": ["push", "D", 4],
+      "expected": {
+        "removed": null,
+        "size": 2,
+        "referenceRemoved": null,
+        "referenceSize": 2
+      },
+      "actual": {
+        "removed": null,
+        "size": 2,
+        "referenceRemoved": null,
+        "referenceSize": 2
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:59-63 push adds and shifts up"
+    },
+    {
+      "name": "fixture step 7: pop",
+      "input": ["pop"],
+      "expected": {
+        "removed": "C",
+        "size": 1,
+        "referenceRemoved": "C",
+        "referenceSize": 1
+      },
+      "actual": {
+        "removed": "C",
+        "size": 1,
+        "referenceRemoved": "C",
+        "referenceSize": 1
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:69-75 pop removes the least priority"
+    },
+    {
+      "name": "fixture step 8: pop",
+      "input": ["pop"],
+      "expected": {
+        "removed": "D",
+        "size": 0,
+        "referenceRemoved": "D",
+        "referenceSize": 0
+      },
+      "actual": {
+        "removed": "D",
+        "size": 0,
+        "referenceRemoved": "D",
+        "referenceSize": 0
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:69-75 pop removes the least priority"
+    },
+    {
+      "name": "empty state after drain",
+      "input": "isEmpty()",
+      "expected": true,
+      "actual": true,
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:50-51 isEmpty"
+    },
+    {
+      "name": "separate instances do not share contents",
+      "input": "a.push('A', 1); b untouched",
+      "expected": {
+        "aEmpty": false,
+        "bEmpty": true
+      },
+      "actual": {
+        "aEmpty": false,
+        "bEmpty": true
+      },
+      "pass": true,
+      "precondition": "KeyPriorityQueue.js:41-44 constructor creates a new heap and Map"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "parent formula off by one (floor(p / 2))",
+      "file": "Data-Structures/Heap/KeyPriorityQueue.js",
+      "edit": {
+        "from": "const getParentPosition = (position) => Math.floor((position - 1) / 2)",
+        "to": "const getParentPosition = (position) => Math.floor(position / 2)"
+      },
+      "named_test": "explicit table: parent of position 0 is -1",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " Key Priority Queue Methods push and pop Test Case 1",
+        " Key Priority Queue Methods push and pop Test Case 2",
+        " Key Priority Queue Methods push and pop Test Case 3",
+        " Key Priority Queue Method update Update with change in position",
+        " getParentPosition against independent references explicit table: parent of position 0 is -1",
+        " getParentPosition against independent references explicit table: parent of position 2 is 0",
+        " getParentPosition against independent references explicit table: parent of position 4 is 1",
+        " getParentPosition against independent references explicit table: parent of position 6 is 2",
+        " getParentPosition against independent references explicit table: parent of position 8 is 3",
+        " getParentPosition against independent references explicit table: parent of position 10 is 4",
+        " getParentPosition against independent references explicit table: parent of position 12 is 5",
+        " getParentPosition against independent references explicit table: parent of position 14 is 6",
+        " getParentPosition against independent references explicit table: parent of position 16 is 7",
+        " getParentPosition against independent references explicit table: parent of position 18 is 8",
+        " getParentPosition against independent references explicit table: parent of position 20 is 9",
+        " getParentPosition against independent references explicit table: parent of position 22 is 10",
+        " getParentPosition against independent references explicit table: parent of position 24 is 11",
+        " getParentPosition against independent references bit-shift oracle agrees for positions 0..63",
+        " getParentPosition against independent references representative result: getParentPosition(4) is 1"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T003/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11999,
+    "passed": 11999,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}
