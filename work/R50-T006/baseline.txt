@@ -1,0 +1,9 @@
+"" -> {}
+"a" -> {"a":1}
+"HelLo" -> {"h":1,"e":1,"l":2,"o":1}
+"Mississippi" -> {"m":1,"i":4,"s":4,"p":2}
+"a_b" -> {"a":1,"_":1,"b":1}
+"hello!" -> TypeError: Input must not contain special characters
+"h3llo" -> TypeError: Input must not contain numbers
+0 -> TypeError: Input should be a string
+"two words" -> TypeError: Input must not contain special characters

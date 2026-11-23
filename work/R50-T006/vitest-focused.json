@@ -1,0 +1,52 @@
+{
+  "command": "node_modules/.bin/vitest run String/test/CountLetters.test.js --reporter=json --outputFile=work/R50-T006/vitest-focused.raw.json",
+  "numTotalTests": 11,
+  "numPassedTests": 11,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " CountLetters expect throws on use wrong param",
+      "status": "passed"
+    },
+    {
+      "name": " CountLetters expect throws when using a number in the string",
+      "status": "passed"
+    },
+    {
+      "name": " CountLetters expect throws when using a special characters in the string",
+      "status": "passed"
+    },
+    {
+      "name": " CountLetters count the letters in a string. Allows lower case",
+      "status": "passed"
+    },
+    {
+      "name": " CountLetters count the letters in a string. Allows upper case",
+      "status": "passed"
+    },
+    {
+      "name": " CountLetters count the letters in a string. Allows upper and lower case",
+      "status": "passed"
+    },
+    {
+      "name": " countLetters contract (locked before refactor) smallest valid input: empty string gives an empty object",
+      "status": "passed"
+    },
+    {
+      "name": " countLetters contract (locked before refactor) ordinary input: counts are case-insensitive, keys in first-seen order",
+      "status": "passed"
+    },
+    {
+      "name": " countLetters contract (locked before refactor) underscore is a word character, so it is counted",
+      "status": "passed"
+    },
+    {
+      "name": " countLetters contract (locked before refactor) throws the documented TypeError messages",
+      "status": "passed"
+    },
+    {
+      "name": " countLetters contract (locked before refactor) returns a new object on each call",
+      "status": "passed"
+    }
+  ]
+}
