@@ -1,0 +1,36 @@
+{
+  "command": "node_modules/.bin/vitest run Data-Structures/Tree/test/Trie.test.js --reporter=json --outputFile=work/R50-T008/vitest-focused.raw.json",
+  "numTotalTests": 7,
+  "numPassedTests": 7,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " TrieNode a node created without a parent has parent null and count 0",
+      "status": "passed"
+    },
+    {
+      "name": " TrieNode a child node keeps a reference to its parent",
+      "status": "passed"
+    },
+    {
+      "name": " Trie absent-result paths (no exceptions are thrown) missing word 'cab' reaches the null branch of findPrefix",
+      "status": "passed"
+    },
+    {
+      "name": " Trie absent-result paths (no exceptions are thrown) prefix 'ca' is not a complete word, but 'car' is",
+      "status": "passed"
+    },
+    {
+      "name": " Trie absent-result paths (no exceptions are thrown) non-string input is ignored, not thrown (lines 52 and 70)",
+      "status": "passed"
+    },
+    {
+      "name": " Trie absent-result paths (no exceptions are thrown) failed lookups leave the trie unchanged and later calls succeed",
+      "status": "passed"
+    },
+    {
+      "name": " Trie absent-result paths (no exceptions are thrown) repeated insertion increments the count of the same node",
+      "status": "passed"
+    }
+  ]
+}

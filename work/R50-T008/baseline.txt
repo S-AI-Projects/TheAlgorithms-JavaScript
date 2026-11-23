@@ -1,0 +1,7 @@
+contains car/ca/cab/x: true false false false
+findPrefix ca is node: true count 0 | findPrefix cab: null
+findOccurrences car/ca/cab: 1 0 0
+findAllWords cab: [] findAllWords ca: [{"word":"car","count":1},{"word":"cat","count":1}]
+after second insert car, occurrences: 2
+insert(5): undefined findPrefix(5): null
+side check (remove): insert car,cart; remove car -> contains(cart)= true

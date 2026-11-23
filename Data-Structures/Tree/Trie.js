@@ -1,3 +1,18 @@
+/**
+ * One node of the Trie: a single character (`key`), how many inserted words
+ * end exactly here (`count`), its `children` keyed by character and its
+ * `parent` (`null` for the root or when no parent is given).
+ *
+ * Absent results: the Trie never throws for a missing word. Instead,
+ * - `findPrefix` returns `null` when some character of the prefix has no
+ *   child node, e.g. 'cab' after inserting 'car' and 'cat';
+ * - a node that exists only as a prefix (e.g. 'ca') has `count === 0`, so
+ *   `contains('ca')` is `false` and `findOccurrences('ca')` is `0`.
+ * Lookups never create nodes, so a failed lookup leaves the Trie unchanged.
+ *
+ * @param {string|null} key character stored in this node (`null` for root)
+ * @param {TrieNode|null} [parent] parent node; omitted means `null`
+ */
 class TrieNode {
   constructor(key, parent) {
     this.key = key
@@ -129,4 +144,4 @@ class Trie {
   }
 }
 
-export { Trie }
+export { Trie, TrieNode }
