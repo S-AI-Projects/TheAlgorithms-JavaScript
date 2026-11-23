@@ -1,0 +1,44 @@
+{
+  "command": "node_modules/.bin/vitest run Recursive/test/FibonacciNumberRecursive.test.js --reporter=json --outputFile=work/R50-T009/vitest-focused.raw.json",
+  "numTotalTests": 9,
+  "numPassedTests": 9,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " FibonacciNumberRecursive should return 0",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive should return 1",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive should return 5",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive should return 9",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive indexing fibonacci(0) is 0",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive indexing fibonacci(1) is 1",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive indexing fibonacci(2) is 1",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive indexing fibonacci(5) is 5",
+      "status": "passed"
+    },
+    {
+      "name": " FibonacciNumberRecursive indexing fibonacci(10) is 55",
+      "status": "passed"
+    }
+  ]
+}

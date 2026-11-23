@@ -1,0 +1,128 @@
+{
+  "task": "R50-T009",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Recursive/test/FibonacciNumberRecursive.test.js --reporter=json --outputFile=work/R50-T009/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 9,
+    "passed": 9,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "fibonacci(0)",
+      "input": 0,
+      "expected": 0,
+      "actual": 0,
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:8 zero-based indexing; :20-21 base case n < 2"
+    },
+    {
+      "name": "fibonacci(1)",
+      "input": 1,
+      "expected": 1,
+      "actual": 1,
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:8 zero-based indexing; :20-21 base case n < 2"
+    },
+    {
+      "name": "fibonacci(2)",
+      "input": 2,
+      "expected": 1,
+      "actual": 1,
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:8 zero-based indexing; :20-21 base case n < 2"
+    },
+    {
+      "name": "fibonacci(5)",
+      "input": 5,
+      "expected": 5,
+      "actual": 5,
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:8 zero-based indexing; :20-21 base case n < 2"
+    },
+    {
+      "name": "fibonacci(10)",
+      "input": 10,
+      "expected": 55,
+      "actual": 55,
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:8 zero-based indexing; :20-21 base case n < 2"
+    },
+    {
+      "name": "n = 20: value and exact call count",
+      "input": 20,
+      "expected": {
+        "value": 6765,
+        "calls": 21891
+      },
+      "actual": {
+        "value": 6765,
+        "calls": 21891
+      },
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:23 two recursive calls per n >= 2"
+    },
+    {
+      "name": "n = 24: value and exact call count",
+      "input": 24,
+      "expected": {
+        "value": 46368,
+        "calls": 150049
+      },
+      "actual": {
+        "value": 46368,
+        "calls": 150049
+      },
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:23 two recursive calls per n >= 2"
+    },
+    {
+      "name": "n = 28: value and exact call count",
+      "input": 28,
+      "expected": {
+        "value": 317811,
+        "calls": 1028457
+      },
+      "actual": {
+        "value": 317811,
+        "calls": 1028457
+      },
+      "pass": true,
+      "precondition": "FibonacciNumberRecursive.js:23 two recursive calls per n >= 2"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "base case widened (n < 2 becomes n <= 2)",
+      "file": "Recursive/FibonacciNumberRecursive.js",
+      "edit": {
+        "from": "  if (n < 2) {\n",
+        "to": "  if (n <= 2) {\n"
+      },
+      "named_test": "fibonacci(2) is 1",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " FibonacciNumberRecursive should return 5",
+        " FibonacciNumberRecursive should return 9",
+        " FibonacciNumberRecursive indexing fibonacci(2) is 1",
+        " FibonacciNumberRecursive indexing fibonacci(5) is 5",
+        " FibonacciNumberRecursive indexing fibonacci(10) is 55"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T009/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11975,
+    "passed": 11975,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}
