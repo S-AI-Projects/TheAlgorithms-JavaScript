@@ -1,0 +1,2 @@
+fixture removal order: A,B,C,D isEmpty: true
+pop on empty -> undefined isEmpty after: true heap length: 0 own keys: ["-1"]

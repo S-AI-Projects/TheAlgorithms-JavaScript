@@ -1,0 +1,160 @@
+{
+  "command": "node_modules/.bin/vitest run Data-Structures/Heap/test/KeyPriorityQueue.test.js --reporter=json --outputFile=work/R50-T003/vitest-focused.raw.json",
+  "numTotalTests": 38,
+  "numPassedTests": 38,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " Key Priority Queue Method isEmpty Check heap is empty",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Method isEmpty Check heap is not empty",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Methods push and pop Test Case 1",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Methods push and pop Test Case 2",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Methods push and pop Test Case 3",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Method contains Check heap does not contain element",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Method contains Check heap contains element",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Method update Update without change in position",
+      "status": "passed"
+    },
+    {
+      "name": " Key Priority Queue Method update Update with change in position",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 0 is -1",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 1 is 0",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 2 is 0",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 3 is 1",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 4 is 1",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 5 is 2",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 6 is 2",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 7 is 3",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 8 is 3",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 9 is 4",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 10 is 4",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 11 is 5",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 12 is 5",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 13 is 6",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 14 is 6",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 15 is 7",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 16 is 7",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 17 is 8",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 18 is 8",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 19 is 9",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 20 is 9",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 21 is 10",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 22 is 10",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 23 is 11",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references explicit table: parent of position 24 is 11",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references bit-shift oracle agrees for positions 0..63",
+      "status": "passed"
+    },
+    {
+      "name": " getParentPosition against independent references representative result: getParentPosition(4) is 1",
+      "status": "passed"
+    },
+    {
+      "name": " queue order relying on getParentPosition enqueue A, B, C; remove twice; insert D; drain -> A, B, C, D",
+      "status": "passed"
+    },
+    {
+      "name": " queue order relying on getParentPosition separate instances do not share contents",
+      "status": "passed"
+    }
+  ]
+}

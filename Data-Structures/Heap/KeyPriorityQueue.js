@@ -19,6 +19,20 @@
  */
 
 // Priority Queue Helper functions
+
+/**
+ * Returns the array index of the parent of the node stored at `position`.
+ *
+ * Example: getParentPosition(4) === 1, because node 1 has children at
+ * 2 * 1 + 1 = 3 and 2 * 1 + 2 = 4. Siblings share a parent:
+ * getParentPosition(3) === getParentPosition(4) === 1.
+ *
+ * The root (position 0) has no parent and yields -1, which callers treat as
+ * "no parent" via their `parentPos >= 0` checks.
+ *
+ * @param {number} position non-negative integer index into the heap array
+ * @returns {number} parent index, or -1 for the root
+ */
 const getParentPosition = (position) => Math.floor((position - 1) / 2)
 const getChildrenPositions = (position) => [2 * position + 1, 2 * position + 2]
 
@@ -154,4 +168,4 @@ class KeyPriorityQueue {
   }
 }
 
-export { KeyPriorityQueue }
+export { KeyPriorityQueue, getParentPosition }
