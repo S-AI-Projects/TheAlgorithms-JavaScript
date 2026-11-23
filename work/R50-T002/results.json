@@ -1,0 +1,124 @@
+{
+  "task": "R50-T002",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Ciphers/test/KeywordShiftedAlphabet.test.js --reporter=json --outputFile=work/R50-T002/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 9,
+    "passed": 9,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "checkKeywordValidity valid boundary: smallest keyword",
+      "input": "a",
+      "expected": true,
+      "actual": true,
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:3 each character can occur only once"
+    },
+    {
+      "name": "checkKeywordValidity valid interior: ordinary keyword",
+      "input": "keyword",
+      "expected": true,
+      "actual": true,
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:3 each character can occur only once"
+    },
+    {
+      "name": "checkKeywordValidity valid boundary: all 26 letters",
+      "input": "zyxwvutsrqponmlkjihgfedcba",
+      "expected": true,
+      "actual": true,
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:3 each character can occur only once"
+    },
+    {
+      "name": "checkKeywordValidity invalid boundary: smallest repeat",
+      "input": "aa",
+      "expected": false,
+      "actual": false,
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:3 each character can occur only once"
+    },
+    {
+      "name": "checkKeywordValidity invalid interior: ordinary repeat",
+      "input": "hello",
+      "expected": false,
+      "actual": false,
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:3 each character can occur only once"
+    },
+    {
+      "name": "checkKeywordValidity invalid: 27 letters",
+      "input": "zyxwvutsrqponmlkjihgfedcbaa",
+      "expected": false,
+      "actual": false,
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:3 each character can occur only once"
+    },
+    {
+      "name": "encrypt with smallest keyword",
+      "input": ["a", "abc"],
+      "expected": "abc",
+      "actual": "abc",
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:3 each character can occur only once"
+    },
+    {
+      "name": "encrypt with ordinary keyword",
+      "input": ["keyword", "Hello world!"],
+      "expected": "Aoggj ujngw!",
+      "actual": "Aoggj ujngw!",
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:8 translation table"
+    },
+    {
+      "name": "encrypt rejects repeated keyword",
+      "input": ["aa", "abc"],
+      "expected": "throws: Invalid keyword!",
+      "actual": "throws: Invalid keyword!",
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:103-104 checkInputs -> Invalid keyword!"
+    },
+    {
+      "name": "encrypt rejects empty keyword",
+      "input": ["", "abc"],
+      "expected": "throws: Both keyword and message must be specified",
+      "actual": "throws: Both keyword and message must be specified",
+      "pass": true,
+      "precondition": "KeywordShiftedAlphabet.js:99-100 checkInputs"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "original defect restored (every character accepted)",
+      "file": "Ciphers/KeywordShiftedAlphabet.js",
+      "edit": {
+        "from": "    return rest.indexOf(char) === -1\n",
+        "to": "    return true\n"
+      },
+      "named_test": "smallest repeated keyword 'aa' is rejected",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " checkKeywordValidity boundaries invalid side smallest repeated keyword 'aa' is rejected",
+        " checkKeywordValidity boundaries invalid side ordinary repeated keyword 'hello' is rejected",
+        " checkKeywordValidity boundaries invalid side a 27th letter must repeat one of the 26 and is rejected"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T002/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11977,
+    "passed": 11977,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}

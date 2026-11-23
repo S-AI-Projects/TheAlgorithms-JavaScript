@@ -1,0 +1,21 @@
+Negative control for R50-T002
+
+check.py was run once with the body of checkKeywordValidity temporarily replaced by
+'return true' for every character, which reproduces the original forEach defect
+(the function always returned true). The source was restored afterwards.
+
+Command: python3 work/R50-T002/check.py   ->  exit 1 (non-zero, as required)
+
+FAILED:
+  - focused tests failed: {'command': 'node_modules/.bin/vitest run Ciphers/test/KeywordShiftedAlphabet.test.js --reporter=json --outputFile=work/R50-T002/vitest-focused.raw.json', 'exit': 1, 'total': 9, 'passed': 6, 'failed': 3}
+  -   failed:  checkKeywordValidity boundaries invalid side smallest repeated keyword 'aa' is rejected
+  -   failed:  checkKeywordValidity boundaries invalid side ordinary repeated keyword 'hello' is rejected
+  -   failed:  checkKeywordValidity boundaries invalid side a 27th letter must repeat one of the 26 and is rejected
+  - fixture mismatch: checkKeywordValidity invalid boundary: smallest repeat
+  - fixture mismatch: checkKeywordValidity invalid interior: ordinary repeat
+  - fixture mismatch: checkKeywordValidity invalid: 27 letters
+  - fixture mismatch: encrypt rejects repeated keyword
+  - repository test script failed: {'command': 'npm test -- --reporter=json --outputFile=work/R50-T002/vitest-full.raw.json', 'exit': 1, 'total': 11977, 'passed': 11974, 'failed': 3}
+  -   failed:  checkKeywordValidity boundaries invalid side smallest repeated keyword 'aa' is rejected
+  -   failed:  checkKeywordValidity boundaries invalid side ordinary repeated keyword 'hello' is rejected
+  -   failed:  checkKeywordValidity boundaries invalid side a 27th letter must repeat one of the 26 and is rejected

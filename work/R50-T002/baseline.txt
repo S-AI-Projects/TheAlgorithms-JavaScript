@@ -1,0 +1,8 @@
+Baseline: ORIGINAL Ciphers/KeywordShiftedAlphabet.js (pinned commit 5c39e87), via encrypt()
+encrypt("a", "abc") -> "abc"
+encrypt("keyword", "Hello world!") -> "Aoggj ujngw!"
+encrypt("zyxwvutsrqponmlkjihgfedcba", "abc") -> "zyx"
+encrypt("", "abc") -> throws: Both keyword and message must be specified
+encrypt("aa", "abc") -> "aab"
+encrypt("hello", "d") -> "l"
+round trip with repeated keyword: decrypt("hello", encrypt("hello", "d")) -> "c" (expected "d")
