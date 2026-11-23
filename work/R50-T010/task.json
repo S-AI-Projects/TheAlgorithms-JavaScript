@@ -1,0 +1,22 @@
+{
+  "task": "R50-T010",
+  "focused_tests": ["Backtracking/tests/KnightTour.test.js"],
+  "mutants": [
+    {
+      "name": "backtracking reset removed",
+      "file": "Backtracking/KnightTour.js",
+      "find": "        this.board[y][x] = 0\n",
+      "replace": "",
+      "tests": ["Backtracking/tests/KnightTour.test.js"],
+      "must_fail": "failed search on 3x3 leaves the board all zeros"
+    },
+    {
+      "name": "lower row bound off by one (y > 0)",
+      "file": "Backtracking/KnightTour.js",
+      "find": "([y, x]) => y >= 0 && y < this.size",
+      "replace": "([y, x]) => y > 0 && y < this.size",
+      "tests": ["Backtracking/tests/KnightTour.test.js"],
+      "must_fail": "getMoves keeps moves onto row 0 and column 0"
+    }
+  ]
+}
