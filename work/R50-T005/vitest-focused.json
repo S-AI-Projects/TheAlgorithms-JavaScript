@@ -1,0 +1,44 @@
+{
+  "command": "node_modules/.bin/vitest run Cellular-Automata/test/ConwaysGameOfLife.test.js --reporter=json --outputFile=work/R50-T005/vitest-focused.raw.json",
+  "numTotalTests": 9,
+  "numPassedTests": 9,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " newGeneration should produce the next generation according to the rules",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input smallest valid input: an empty grid gives an empty grid",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input smallest non-empty grid: a lone live cell dies",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input ordinary input: one glider step",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input does not modify the input grid",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input accepts a deeply frozen grid, so it never writes to its input",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input returns a new grid that shares no rows with the input",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input same input twice in fresh state gives the same result",
+      "status": "passed"
+    },
+    {
+      "name": " newGeneration is deterministic and isolates its input an earlier call with another input cannot change a later result",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "task": "R50-T005",
+  "focused_tests": ["Cellular-Automata/test/ConwaysGameOfLife.test.js"],
+  "mutants": [
+    {
+      "name": "writes the next state back into the input grid",
+      "file": "Cellular-Automata/ConwaysGameOfLife.js",
+      "find": "      nextGenerationRow.push(cellIsAlive ? 1 : 0)\n",
+      "replace": "      nextGenerationRow.push(cellIsAlive ? 1 : 0)\n      if (i > 0) cells[i - 1][j] = nextGeneration[i - 1][j]\n",
+      "tests": ["Cellular-Automata/test/ConwaysGameOfLife.test.js"],
+      "must_fail": "does not modify the input grid"
+    }
+  ]
+}
