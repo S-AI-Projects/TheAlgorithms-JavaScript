@@ -1,0 +1,217 @@
+{
+  "task": "R50-T005",
+  "install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0
+  },
+  "focused_tests": {
+    "command": "node_modules/.bin/vitest run Cellular-Automata/test/ConwaysGameOfLife.test.js --reporter=json --outputFile=work/R50-T005/vitest-focused.raw.json",
+    "exit": 0,
+    "total": 9,
+    "passed": 9,
+    "failed": 0
+  },
+  "fixture": [
+    {
+      "name": "smallest valid input: empty grid",
+      "input": [],
+      "expected": [],
+      "actual": [],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:24-25 loops over cells.length (0 rows)"
+    },
+    {
+      "name": "smallest non-empty grid: lone cell dies",
+      "input": [[1]],
+      "expected": [[0]],
+      "actual": [[0]],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:6 rule 3, live cell with 0 neighbours dies"
+    },
+    {
+      "name": "ordinary input: glider step",
+      "input": [
+        [0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "expected": [
+        [0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "actual": [
+        [0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:4-5 rules 1 and 2"
+    },
+    {
+      "name": "input grid unchanged after call",
+      "input": [
+        [0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "expected": [
+        [0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "actual": [
+        [0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:43 cells are only read"
+    },
+    {
+      "name": "output shares no rows with input",
+      "input": "glider",
+      "expected": {
+        "sameGrid": false,
+        "sharedRows": 0
+      },
+      "actual": {
+        "sameGrid": false,
+        "sharedRows": 0
+      },
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:25,27 new arrays are created"
+    },
+    {
+      "name": "glider run twice, then again after another input (result tampered)",
+      "input": "glider x3",
+      "expected": [
+        [
+          [0, 0, 0, 0, 0],
+          [1, 0, 1, 0, 0],
+          [0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        [
+          [0, 0, 0, 0, 0],
+          [1, 0, 1, 0, 0],
+          [0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        [
+          [0, 0, 0, 0, 0],
+          [1, 0, 1, 0, 0],
+          [0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ]
+      ],
+      "actual": [
+        [
+          [0, 0, 0, 0, 0],
+          [1, 0, 1, 0, 0],
+          [0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        [
+          [0, 0, 0, 0, 0],
+          [1, 0, 1, 0, 0],
+          [0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        [
+          [0, 0, 0, 0, 0],
+          [1, 0, 1, 0, 0],
+          [0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ]
+      ],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:24 no module-level state"
+    },
+    {
+      "name": "external dependencies found by scanning the source (comments removed)",
+      "input": "Date, Math, performance, process, require, import, fetch, console, timers, globals",
+      "expected": [],
+      "actual": [],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:24-54 body uses only its parameter and local variables"
+    },
+    {
+      "name": "module-level variables (shared state between calls)",
+      "input": "top-level let/var/const declarations",
+      "expected": [],
+      "actual": [],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js: only an exported function is declared"
+    },
+    {
+      "name": "deeply frozen input is accepted (no write is attempted)",
+      "input": "Object.freeze(glider)",
+      "expected": [
+        [0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "actual": [
+        [0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ],
+      "pass": true,
+      "precondition": "ConwaysGameOfLife.js:43 cells are only read"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "writes the next state back into the input grid",
+      "file": "Cellular-Automata/ConwaysGameOfLife.js",
+      "edit": {
+        "from": "      nextGenerationRow.push(cellIsAlive ? 1 : 0)\n",
+        "to": "      nextGenerationRow.push(cellIsAlive ? 1 : 0)\n      if (i > 0) cells[i - 1][j] = nextGeneration[i - 1][j]\n"
+      },
+      "named_test": "does not modify the input grid",
+      "named_test_on_original": ["passed"],
+      "killed": true,
+      "exit": 1,
+      "failed_tests_on_mutant": [
+        " newGeneration should produce the next generation according to the rules",
+        " newGeneration is deterministic and isolates its input ordinary input: one glider step",
+        " newGeneration is deterministic and isolates its input does not modify the input grid",
+        " newGeneration is deterministic and isolates its input accepts a deeply frozen grid, so it never writes to its input",
+        " newGeneration is deterministic and isolates its input same input twice in fresh state gives the same result",
+        " newGeneration is deterministic and isolates its input an earlier call with another input cannot change a later result"
+      ]
+    }
+  ],
+  "full_suite": {
+    "command": "npm test -- --reporter=json --outputFile=work/R50-T005/vitest-full.raw.json",
+    "exit": 0,
+    "total": 11978,
+    "passed": 11978,
+    "failed": 0
+  },
+  "ok": true,
+  "failures": []
+}

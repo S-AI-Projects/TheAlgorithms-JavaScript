@@ -1,0 +1,16 @@
+$ node --version
+  -> exit 0
+$ npm --version
+  -> exit 0
+$ npm ci --ignore-scripts --no-audit --no-fund
+  -> exit 0
+$ node_modules/.bin/vitest --version
+  -> exit 0
+$ node_modules/.bin/vitest run Cellular-Automata/test/ConwaysGameOfLife.test.js --reporter=json --outputFile=work/R50-T005/vitest-focused.raw.json
+  -> exit 0
+$ node work/R50-T005/evidence.mjs
+  -> exit 0
+$ node_modules/.bin/vitest run Cellular-Automata/test/ConwaysGameOfLife.test.js --root $TMPDIR/R50-T005-mutant-zfa_1hnd --globals --reporter=json --outputFile=$TMPDIR/R50-T005-mutant-zfa_1hnd/mutant-report.json
+  -> exit 1
+$ npm test -- --reporter=json --outputFile=work/R50-T005/vitest-full.raw.json
+  -> exit 0

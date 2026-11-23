@@ -10,6 +10,16 @@ The Game of Life is a cellular automaton devised by the British mathematician Jo
 
 /**
  * Generates the next generation for a given state of Conway's Game of Life.
+ *
+ * The function is deterministic and has no external dependencies (no time,
+ * randomness, I/O or shared module state). It reads `cells` but never
+ * modifies it, and always builds a brand-new grid, so the same input always
+ * gives the same output, regardless of earlier calls.
+ * Cells outside the grid are treated as dead (the grid does not wrap).
+ *
+ * @param {number[][]} cells rectangular grid of 0 (dead) and 1 (alive)
+ * @returns {number[][]} a new grid of the same shape with the next generation
+ * @example newGeneration([[1]]) // [[0]] (a lone cell dies)
  */
 export function newGeneration(cells) {
   const nextGeneration = []
