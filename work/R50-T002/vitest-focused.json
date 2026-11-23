@@ -1,0 +1,44 @@
+{
+  "command": "node_modules/.bin/vitest run Ciphers/test/KeywordShiftedAlphabet.test.js --reporter=json --outputFile=work/R50-T002/vitest-focused.raw.json",
+  "numTotalTests": 9,
+  "numPassedTests": 9,
+  "numFailedTests": 0,
+  "tests": [
+    {
+      "name": " Hello world! === decrypt(encrypt(Hello world!))",
+      "status": "passed"
+    },
+    {
+      "name": " The Algorithms === decrypt(encrypt(The Algorithms))",
+      "status": "passed"
+    },
+    {
+      "name": " checkKeywordValidity boundaries valid side smallest valid keyword 'a' is accepted",
+      "status": "passed"
+    },
+    {
+      "name": " checkKeywordValidity boundaries valid side ordinary keyword 'keyword' is accepted",
+      "status": "passed"
+    },
+    {
+      "name": " checkKeywordValidity boundaries valid side largest valid keyword uses all 26 letters exactly once",
+      "status": "passed"
+    },
+    {
+      "name": " checkKeywordValidity boundaries invalid side smallest repeated keyword 'aa' is rejected",
+      "status": "passed"
+    },
+    {
+      "name": " checkKeywordValidity boundaries invalid side ordinary repeated keyword 'hello' is rejected",
+      "status": "passed"
+    },
+    {
+      "name": " checkKeywordValidity boundaries invalid side a 27th letter must repeat one of the 26 and is rejected",
+      "status": "passed"
+    },
+    {
+      "name": " checkKeywordValidity boundaries invalid side empty keyword is rejected by checkInputs before validity",
+      "status": "passed"
+    }
+  ]
+}

@@ -5,13 +5,13 @@
  * Second row start with the keyword, then we continue with the rest of the characters that are missing in alphabetical order.
  *
  * |A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|
- * |K|E|Y|W|O|R|D|A|B|C|F|G|H|I|J|L|M|N|P|Q|S|T|U|V|W|Z|
+ * |K|E|Y|W|O|R|D|A|B|C|F|G|H|I|J|L|M|N|P|Q|S|T|U|V|X|Z|
  *
  * Encryption is then just a matter of writing the matching (same index) letter from the second row instead of the first row:
  * 'Hello world' -> 'Aoggj ujngw'
  *
  * Decryption is then just the reverse process of writing the matching (same index) letter from the first row instead of the second row
- * 'Aogg ujngw' -> 'Hello world'
+ * 'Aoggj ujngw' -> 'Hello world'
  *
  * Non alphabetical characters (space, exclamation mark, ...) are kept as they are
  */
@@ -45,14 +45,31 @@ const alphabet = [
   'z'
 ]
 
+/**
+ * Checks the keyword rule stated at the top of this file:
+ * "Keyword must be a word where each character can occur only once."
+ *
+ * Supported boundaries:
+ * - 'a' (one character) is the smallest valid keyword -> true
+ * - a keyword using all 26 letters once is the largest valid keyword -> true
+ * - any repeated character, e.g. 'aa' or 'hello', is invalid -> false
+ * - '' is never reached through encrypt/decrypt: checkInputs rejects it first
+ *   with 'Both keyword and message must be specified'.
+ * Characters are compared exactly as given (no case folding).
+ *
+ * @param {string} keyword
+ * @returns {boolean} true when no character occurs more than once
+ * @example checkKeywordValidity('keyword') // true
+ * @example checkKeywordValidity('hello') // false ('l' repeats)
+ */
 function checkKeywordValidity(keyword) {
-  keyword.split('').forEach((char, index) => {
+  // `every` stops and returns false on the first repeated character.
+  // (A `return false` inside `forEach` only left the callback, so repeated
+  // characters were previously accepted.)
+  return keyword.split('').every((char, index) => {
     const rest = keyword.slice(0, index) + keyword.slice(index + 1)
-    if (rest.indexOf(char) !== -1) {
-      return false
-    }
+    return rest.indexOf(char) === -1
   })
-  return true
 }
 
 function getEncryptedAlphabet(keyword) {
@@ -106,7 +123,7 @@ function decrypt(keyword, message) {
   )
 }
 
-export { encrypt, decrypt }
+export { encrypt, decrypt, checkKeywordValidity }
 
 // encrypt('keyword', 'Hello world!') // Prints 'Aoggj ujngw!'
 // decrypt('keyword', 'Aoggj ujngw!') // Prints 'Hello world!

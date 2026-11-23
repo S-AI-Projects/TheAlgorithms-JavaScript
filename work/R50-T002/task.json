@@ -1,0 +1,14 @@
+{
+  "task": "R50-T002",
+  "focused_tests": ["Ciphers/test/KeywordShiftedAlphabet.test.js"],
+  "mutants": [
+    {
+      "name": "original defect restored (every character accepted)",
+      "file": "Ciphers/KeywordShiftedAlphabet.js",
+      "find": "    return rest.indexOf(char) === -1\n",
+      "replace": "    return true\n",
+      "tests": ["Ciphers/test/KeywordShiftedAlphabet.test.js"],
+      "must_fail": "smallest repeated keyword 'aa' is rejected"
+    }
+  ]
+}
