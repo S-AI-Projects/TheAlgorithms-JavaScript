@@ -1,0 +1,22 @@
+{
+  "task": "R50-T004",
+  "focused_tests": ["Sorts/test/OddEvenSort.test.js"],
+  "mutants": [
+    {
+      "name": "swap loses a value (arr[j] = arr[i])",
+      "file": "Sorts/OddEvenSort.js",
+      "find": "  arr[j] = tmp\n",
+      "replace": "  arr[j] = arr[i]\n",
+      "tests": ["Sorts/test/OddEvenSort.test.js"],
+      "must_fail": "output preserves input multiplicities"
+    },
+    {
+      "name": "even pass no longer clears the sorted flag",
+      "file": "Sorts/OddEvenSort.js",
+      "find": "    for (let i = 0; i < arr.length - 1; i += 2) {\n      if (arr[i] > arr[i + 1]) {\n        swap(arr, i, i + 1)\n        sorted = false\n",
+      "replace": "    for (let i = 0; i < arr.length - 1; i += 2) {\n      if (arr[i] > arr[i + 1]) {\n        swap(arr, i, i + 1)\n",
+      "tests": ["Sorts/test/OddEvenSort.test.js"],
+      "must_fail": "output is ordered"
+    }
+  ]
+}
