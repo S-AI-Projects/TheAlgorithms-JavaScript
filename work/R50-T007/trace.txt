@@ -1,0 +1,4 @@
+trace: a true 0
+after union(a,b): a.parent= b b.parent= b ranks a,b,c= 0 1 0
+after union(c,a): c.parent= b ranks a,b,c= 0 1 0
+MST of commented example: {"1":{"2":1},"2":{"1":1,"3":2},"3":{"2":2,"4":1},"4":{"3":1,"5":5},"5":{"4":5}}

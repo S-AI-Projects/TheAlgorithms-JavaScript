@@ -1,0 +1,5 @@
+python: 3.12.10
+node: v26.13.1
+npm: 11.20.0
+platform: macOS-27.2.1-arm64-arm-64bit
+vitest: vitest/1.2.1 darwin-arm64 node-v26.13.1
